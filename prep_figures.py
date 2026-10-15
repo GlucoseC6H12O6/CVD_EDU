@@ -232,6 +232,8 @@ COPY = [
  ('song2022_f3.jpg', '09-04_song2022_fig3.jpg'),
  # 2026-10-16: 08-05 그림
  ('yangoes2014_f2.jpg', '08-05_yangoes2014_fig2.jpg'), ('yangoes2014_f6.jpg', '08-05_yangoes2014_fig6.jpg'),
+ # 2026-10-16: 03-18 Mo 비저항 크기 효과
+ ('jog2023_f3.jpg', '03-18_jog2023_fig3.jpg'),
 ]
 if __name__ == '__main__':
     for j in JOBS: make(*j)
