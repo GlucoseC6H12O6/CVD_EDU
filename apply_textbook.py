@@ -169,7 +169,8 @@ def build():
         raw = raw[:tpl.start(2)] + new + raw[tpl.end(2):]
         raw, c = re.subn(r'(<button[^>]*data-ch="%s"[^>]*>.*?<small>)[^<]*(</small>)' % cid, r'\g<1>개정\g<2>', raw, count=1, flags=re.S)
         done.append((cid, len(body)))
-    raw = raw.replace(' v1.2</title>', ' v1.2</title>', 1)
+    # 탭 제목: 원래 HTML은 Part 03만 다루던 시절의 제목을 그대로 쓰고 있었다
+    raw = re.sub(r'<title>[^<]*</title>', '<title>CVD Engineering Knowledge — CVD 엔지니어 교과서 v1.2</title>', raw, count=1)
     OUT.write_text(raw, encoding='utf-8')
     return done
 
