@@ -230,6 +230,8 @@ COPY = [
  ('li2018_f13.jpg', '08-06_li2018_fig13.jpg'), ('tchatchoua2023_f1.jpg', '08-07_tchatchoua2023_fig1.jpg'),
  # 2026-10-15: Part 09 시각화
  ('song2022_f3.jpg', '09-04_song2022_fig3.jpg'),
+ # 2026-10-16: 08-05 그림
+ ('yangoes2014_f2.jpg', '08-05_yangoes2014_fig2.jpg'), ('yangoes2014_f6.jpg', '08-05_yangoes2014_fig6.jpg'),
 ]
 if __name__ == '__main__':
     for j in JOBS: make(*j)
