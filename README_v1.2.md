@@ -136,9 +136,16 @@
 - **다음 장 자동 넘김.** 장 끝에 다음 장(Part의 마지막 장이면 다음 Part의 첫 장) 안내를 두고, 바닥에 닿은 뒤 다시 내리면(휠 약 세 칸, 터치로 끌어올리기, ↓·Space·PageDown 두 번) 넘어간다. 바닥에 닿게 만든 스크롤의 관성은 세지 않는다. 안내를 눌러도 된다. 마지막 장(10-05)에서는 "마지막 장"으로 표시한다.
 - **근거 호버.** `[논문 3]`·`[특허 1]`·`[리뷰 2]` 같은 표시에 마우스를 올리면 장 끝 참고 목록의 그 항목이 카드로 뜬다. Part 03의 `S##`은 장 끝 '출처와 확인 수준' 표의 행(서지, 유형, 확인 수준, 핵심 내용 앞부분)을 보여 준다. 번호 없는 표시(계산, 현장 등)는 그 표시의 뜻을 보여 준다. 터치 화면에서는 누르면 뜨고, 바깥을 누르거나 Esc로 닫는다. 코드는 `textbook_ui.js`·`textbook_ui.css`이며 빌드가 HTML에 넣는다.
 - **제작 정보 삭제.** 장 끝의 "NN-NN · v1.2 교과서 원고는 textbook/NN-NN.md에서 생성했다", 사이드바의 "Engineering textbook · 89 chapters · first draft", 상단의 "89개 Chapter · 1차 집필본", 장마다 붙은 "초안·개정" 표시, Part 03 머리표의 판 번호, 탭 제목의 판 번호를 뺐다. Part 03 장 끝 '자료 수집 기록'은 '출처와 확인 수준'으로 이름을 바꾸고, 화면에 보일 때만 작업 일지 문구(수집일과 원고 파일 이름, "사용자 요청으로", 날짜 붙은 추가 표시, 이전 판 이야기, 재검색 기록)를 걸러 낸다(`apply_textbook.reader_srcs`). `film_content/*_자료수집.md` 원본은 연구 기록이라 그대로 두었다.
-- **Part 10 · Device Integration (5개 장).** 10-01 소자 지도(세 소자 비교, Cell Array와 Peripheral, FEOL·MOL·BEOL, Part 03 막의 소자별 쓰임 표), 10-02 Logic Transistor(Strain, HKMG, FinFET, Nanosheet), 10-03 Logic 배선(W Plug, Cu Damascene, Low-k, 금속 교체), 10-04 DRAM(1T1C 원리와 읽기 신호 계산, 묻힌 Word Line, Capacitor 공정과 용량 계산), 10-05 NAND(Charge Trap, BiCS, 3D NAND 공정, Dual-deck). 장마다 약 8,400–9,900자(그림 캡션 포함), 마지막 절에 "CVD 엔지니어가 보는 곳" 표가 있다. 그림 18장(미국 특허 7장: US 7,852,675 FIG. 5·9, US 6,413,802 FIG. 1, US 6,518,171 FIG. 1A–1D, US 3,387,286 FIG. 1, US 12,058,850 FIG. 2 / CC BY 논문 11장, 00-01 그림 1장 재사용). 출처와 확인 수준은 `textbook/_자료수집_part10.md`.
+- **Part 10 · Device Integration (5개 장).** 10-01 소자 구조와 공정 흐름(세 소자 비교, Cell Array와 Peripheral 회로, FEOL·MOL·BEOL, 소자별 CVD 막의 용도 표), 10-02 Logic Transistor(Strain, HKMG, FinFET, Nanosheet), 10-03 Logic 배선(W Plug, Cu Damascene, Low-k, 금속 교체), 10-04 DRAM(1T1C 원리와 읽기 신호 계산, 묻힌 Word Line, Capacitor 공정과 용량 계산), 10-05 NAND(Charge Trap, BiCS, 3D NAND 공정, Dual-deck). 장마다 약 8,400–9,900자(그림 캡션 포함), 마지막 절에 "모듈별 CVD 관리 항목" 표가 있다. 그림 18장(미국 특허 7장: US 7,852,675 FIG. 5·9, US 6,413,802 FIG. 1, US 6,518,171 FIG. 1A–1D, US 3,387,286 FIG. 1, US 12,058,850 FIG. 2 / CC BY 논문 11장, 00-01 그림 1장 재사용). 출처와 확인 수준은 `textbook/_자료수집_part10.md`.
 - **빌드.** `apply_textbook.py`가 `_keep` JSON이 없는 `textbook/NN-NN.md`를 새 Chapter로 보고 template, 사이드바 버튼, 장 이름·절 목록을 더한다(`add_chapter`). 새 Part의 사이드바 제목은 `NEW_PARTS`에 둔다. 검사는 template 수, 사이드바와 template의 일치, 제작 정보 문구가 남지 않았는지를 더 본다.
 
+
+## 제목 정리 (2026-10-16, 사용자 요청)
+
+- 사용자가 "Part 03의 막은 어디에 쓰이나", "세 소자가 하는 일", "칩 안의 두 구역: Cell Array와 Peripheral" 같은 제목을 교과서답지 않다고 지적했다. 같은 기준으로 전체 원고의 제목을 명사형 교과서 제목으로 바꿨다(약 500개).
+- 바꾼 유형: 문장형("진공은 물질이 없다는 뜻이 아니다" → "진공 상태의 기체 분자"), 질문형("산화수를 왜 사용하는가?" → "산화수의 정의와 용도"), 콜론·대시 부제("3.3 표면 손실 확률 β: 누가 어디까지 가는가" → "3.3 표면 손실 확률 β"), "~하지 않기" 지시형, 비유("전하를 담는 그릇과 수도꼭지" → "Cell의 구조와 동작"), 반복 절 제목("1. 어디에, 왜 쓰는가" → "1. 용도와 필요성", "식·수량·단위로 확인하기" → "수식과 단위 계산").
+- 본문의 "손잡이"(공정 변수의 비유, 92곳)는 "조절 변수"·"공정 변수"로 바꿨다. Part 10 본문의 비유·구어 표현(토막, 숙제, 녹여 내다, 깎아 내다 등)도 공정 용어로 고쳤다.
+- 장 제목(h1)은 이제 원래 HTML이 아니라 원고 첫 줄(`# NN-NN · 제목`)에서 가져온다(`apply_textbook.chapter_titles`). Part 00·04의 문장형 부제("Step은 시간에 따라 물리 상태를 만든다" 등)를 원고에서 고쳤고, Part 03은 원고 첫 줄의 막 이름을 쓴다.
 ## 원고 위치
 
 | 대상 | 원고 | 비고 |

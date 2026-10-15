@@ -18,7 +18,7 @@
 | 07 | 문제 해결·제어: 문제 해결 절차, Chamber Matching, SPC, DOE, 고장 진단, Qualification, APC | 7 |
 | 08 | 모델링: 기본 모델, 반응·수송, CFD, Feature-scale, 통계·인과, 최적화, 데이터 기반 공정 | 7 |
 | 09 | 사례: ACL 오염, BPSG 형상 이상, USG 불균일, SiCN 조성·응력, SiB Hardmask, 다중 Chamber Matching | 6 |
-| 10 | 소자: 소자 지도(Logic·DRAM·NAND와 CVD 막의 자리), Logic Transistor(HKMG·FinFET·Nanosheet), Logic 배선(W Plug·Cu Damascene·Low-k), DRAM(1T1C·묻힌 Word Line·Capacitor), NAND Flash(3D NAND 적층·Word Line 교체) | 5 |
+| 10 | 소자: Logic·DRAM·NAND의 구조와 공정 흐름, Logic Transistor(HKMG·FinFET·Nanosheet), Logic 배선(W Plug·Cu Damascene·Low-k), DRAM(1T1C·묻힌 Word Line·Capacitor), NAND Flash(3D NAND 적층·Word Line 교체) | 5 |
 
 ## 그림의 출처와 라이선스
 

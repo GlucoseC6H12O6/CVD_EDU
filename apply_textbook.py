@@ -150,6 +150,7 @@ def build():
     raw = re.sub(r'<summary>자료 수집 기록 · 출처 (\d+)건과 확인 수준</summary>', r'<summary>출처와 확인 수준 · \1건</summary>', raw)
     figs = figure_overrides()
     maths = math_overrides()
+    texts = text_overrides()
     done, added = [], []
     for f in sorted(TB.glob('[0-9][0-9]-[0-9][0-9].md')):
         cid = f.stem
@@ -169,6 +170,11 @@ def build():
                 old_k = store['keep'][k]
                 assert '<math' in old_k, (cid, k, '수식 상자가 아님')
                 store['keep'][k] = re.sub(r'<math\b.*?</math>', lambda _m: texmath.tex_to_mathml(tex, display=True), old_k, count=1, flags=re.S)
+        for (c, k), pairs in texts.items():
+            if c == cid:
+                for old_t, new_t in pairs:
+                    assert store['keep'][k].count(old_t) == 1, (cid, k, old_t)
+                    store['keep'][k] = store['keep'][k].replace(old_t, html.escape(new_t, quote=False))
         md = f.read_text(encoding='utf-8')
         used = [int(x) for x in re.findall(r'^\{\{keep:(\d+)\}\}\s*$', md, flags=re.M)]
         assert sorted(used) == list(range(len(store['keep']))), (cid, 'keep 블록 누락·중복', sorted(used))
@@ -182,6 +188,7 @@ def build():
     for f in added:
         raw = add_chapter(raw, f)
         done.append((f.stem, 0))
+    raw = chapter_titles(raw)
     raw = reader_chrome(raw)
     OUT.write_text(raw, encoding='utf-8')
     return done
@@ -230,6 +237,19 @@ def add_chapter(raw, f):
     return raw
 
 
+def chapter_titles(raw):
+    """장 제목(h1)은 원래 HTML이 아니라 원고 첫 줄 '# NN-NN · 제목'에서 가져온다."""
+    srcs = sorted(TB.glob('[0-9][0-9]-[0-9][0-9].md')) + sorted(A.CONTENT.glob('03-[0-9][0-9]_*_본문.md'))
+    for f in srcs:
+        m = re.match(r'# (\d\d-\d\d) · (.+?)\s*$', f.read_text(encoding='utf-8').split('\n', 1)[0])
+        assert m, (f.name, '첫 줄 제목 형식')
+        cid, title = m.groups()
+        raw, n = re.subn(r'(<h1 class="chapter-heading" id="s-%s">).*?(</h1>)' % cid,
+                         lambda mm: mm.group(1) + inline(title) + mm.group(2), raw, flags=re.S)
+        assert n == 1, (cid, 'h1 개수', n)
+    return raw
+
+
 def reader_chrome(raw):
     """독자에게 쓸모없는 제작 정보(판 번호, 원고 파일 이름, '1차 집필본', 장마다 붙은 초안·개정 표시)를 빼고
     읽기 도구(textbook_ui.css/js: 근거 호버, 다음 장 자동 넘김)를 넣는다 (2026-10-16 사용자 요청)."""
@@ -238,6 +258,9 @@ def reader_chrome(raw):
     raw = re.sub(r'<span class="topright">[^<]*</span>', '', raw, count=1)
     raw = re.sub(r'(<button[^>]*class="chapter-link"[^>]*>.*?)<small>[^<]*</small>', r'\1', raw, flags=re.S)
     raw = re.sub(r'<meta content="[^"]*" name="cvdedu-revision"/>', '', raw)
+    # 사이드바 머리의 홍보 문구("읽고, 계산하고, 다시 돌아오는 교과서")는 책 이름으로 바꾼다
+    raw, n = re.subn(r'(<div class="brand"><b>[^<]*<br/>[^<]*</b>)<p>.*?</p>', r'\1<p>CVD 엔지니어 교과서</p>', raw, count=1)
+    assert n == 1, '사이드바 머리 문구'
     # 탭 제목: 원래 HTML은 Part 03만 다루던 시절의 제목을 그대로 쓰고 있었다
     raw = re.sub(r'<title>[^<]*</title>', '<title>CVD Engineering Knowledge — CVD 엔지니어 교과서</title>', raw, count=1)
     css = (HERE / 'textbook_ui.css').read_text(encoding='utf-8')
@@ -292,6 +315,16 @@ def math_overrides():
         return {}
     parts = re.split(r'^## (\d\d-\d\d) keep:(\d+)\s*$', p.read_text(encoding='utf-8'), flags=re.M)
     return {(parts[i], int(parts[i + 1])): parts[i + 2].strip() for i in range(1, len(parts), 3)}
+
+
+def text_overrides():
+    """textbook/_text.md: '- CID keep:N | 원래 문구 | 바꾼 문구' 줄로 보존 블록 안의 문구를 바꾼다."""
+    p = TB / '_text.md'
+    out = {}
+    if p.exists():
+        for m in re.finditer(r'^- (\d\d-\d\d) keep:(\d+) \| (.+?) \| (.+?)\s*$', p.read_text(encoding='utf-8'), flags=re.M):
+            out.setdefault((m.group(1), int(m.group(2))), []).append((m.group(3), m.group(4)))
+    return out
 
 
 H4ID = re.compile(r'^(s-\d\d-\d\d\.\d\d\.\d\d|anchor-.*)$')
