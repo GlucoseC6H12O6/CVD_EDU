@@ -1,0 +1,14 @@
+{
+"head": [
+"<div class=\"headlines\">PART 00 · CHAPTER 00-01</div>",
+"<h1 class=\"chapter-heading\" id=\"s-00-01\">Semiconductor Fundamentals — CVD 박막이 들어갈 자리를 먼저 본다</h1>"
+],
+"keep": [
+"<figure class=\"concept-figure\"><figcaption>그림 · 소자 단면 속 박막의 서로 다른 역할 · 교육용 모식도</figcaption><svg aria-label=\"기판부터 도전막과 절연막, 하드마스크까지 층을 구성한 추상적인 단면\" role=\"img\" viewbox=\"0 0 800 280\"><rect fill=\"#8fa9bf\" height=\"42\" rx=\"3\" width=\"690\" x=\"55\" y=\"208\"></rect><text fill=\"white\" font-size=\"18\" text-anchor=\"middle\" x=\"400\" y=\"235\">Si 기판</text><rect fill=\"#c5dbea\" height=\"48\" width=\"690\" x=\"55\" y=\"154\"></rect><text fill=\"#21435d\" font-size=\"18\" text-anchor=\"middle\" x=\"405\" y=\"185\">절연막 — 전기적 격리</text><rect fill=\"#9caa83\" height=\"42\" rx=\"2\" width=\"410\" x=\"195\" y=\"105\"></rect><text fill=\"white\" font-size=\"18\" text-anchor=\"middle\" x=\"400\" y=\"132\">도전층 — 전류 경로</text><rect fill=\"#b2a3b7\" height=\"40\" width=\"290\" x=\"255\" y=\"58\"></rect><text fill=\"white\" font-size=\"17\" text-anchor=\"middle\" x=\"400\" y=\"83\">Hardmask — 패턴 전사</text><line stroke=\"#7e92a3\" stroke-dasharray=\"4 4\" stroke-width=\"2\" x1=\"400\" x2=\"400\" y1=\"27\" y2=\"52\"></line><text fill=\"#617486\" font-size=\"13\" text-anchor=\"middle\" x=\"400\" y=\"20\">공정 기능과 계층만 표현 · 실제 소자와 축척 다름</text></svg><p class=\"viz-caveat\">단면 층순서·형상·두께는 특정 소자를 의미하지 않습니다. 막의 기능을 구별하는 개념도입니다.</p></figure>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-00-01-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-01-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-01-references\">"
+]
+}

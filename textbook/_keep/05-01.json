@@ -1,0 +1,14 @@
+{
+"head": [
+"<div class=\"headlines\">PART 05 · CHAPTER 05-01</div>",
+"<h1 class=\"chapter-heading\" id=\"s-05-01\">Film Thickness &amp; Deposition Rate</h1>"
+],
+"keep": [
+"<div class=\"math-figure\"><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>DR</mi><mo>=</mo><mfrac><mrow><mo>Δ</mo><mi>h</mi></mrow><mrow><mo>Δ</mo><mi>t</mi></mrow></mfrac></math></div>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-05-01-reference-0\">",
+"<h2 class=\"section-heading\" id=\"s-05-01-reference-1\">",
+"<h2 class=\"section-heading\" id=\"s-05-01-reference-2\">"
+]
+}

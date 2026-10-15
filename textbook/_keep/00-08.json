@@ -1,0 +1,15 @@
+{
+"head": [
+"<div class=\"headlines\">PART 00 · CHAPTER 00-08</div>",
+"<h1 class=\"chapter-heading\" id=\"s-00-08\">Engineering Mathematics — 수식과 그래프를 공정 언어로 읽기</h1>"
+],
+"keep": [
+"<figure class=\"concept-figure\" id=\"slopeFigure\"><figcaption>실습 그림 · 성장속도와 누적 두께의 관계</figcaption><p class=\"concept-intro\">가상의 두께 모델을 변경하며 <strong>성장속도(기울기)</strong>와 <strong>두께(누적 결과)</strong>가 어떻게 달라지는지 관찰해 보세요.</p><label class=\"figure-slider\">가상 일정 성장률 <span id=\"slopeLabel\">20 Å/s</span><input id=\"slopeInput\" max=\"40\" min=\"0\" step=\"5\" type=\"range\" value=\"20\"/></label><svg aria-label=\"시간 대비 가상 박막 두께의 직선 그래프\" id=\"slopeSvg\" role=\"img\" viewbox=\"0 0 740 290\"></svg><p class=\"viz-caveat\">교육용 선형 모델 h(t)=v·t. 실제 막질 성장률이 항상 일정하다는 뜻은 아닙니다.</p></figure>",
+"<p><math aria-label=\"Average growth rate equals thickness change over time change\" display=\"block\"><mrow><mover><mi>r</mi><mo>¯</mo></mover><mo>=</mo><mfrac><mrow><mi>Δ</mi><mi>h</mi></mrow><mrow><mi>Δ</mi><mi>t</mi></mrow></mfrac></mrow></math></p>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-00-08-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-08-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-08-references\">"
+]
+}

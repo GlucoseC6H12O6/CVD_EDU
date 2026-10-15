@@ -1,0 +1,74 @@
+/* v1.1 — Part 03 본문 원고 반영용 스타일. 기존 리더(.paper) 팔레트에 맞춤 */
+.fc{--f-ink:#172438;--f-mute:#5b6e82;--f-line:#dbe5ee;--f-acc:#1754a0;--f-accbg:#eef4fb}
+.fc p,.fc li{font-size:15.5px;line-height:1.85}
+.fc ul,.fc ol{padding-left:22px;margin:0 0 22px}
+.fc li{margin-bottom:6px}
+.fc h4{font-size:17px;line-height:1.5;margin:36px 0 10px;letter-spacing:-.02em;color:#1b3550}
+.fc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;background:#f0f4f8;padding:1px 5px;border-radius:4px}
+
+/* 머리말(근거 표시 안내) */
+.fc .fc-head{font-size:12.5px;line-height:1.9;color:var(--f-mute);border:1px solid var(--f-line);border-radius:10px;background:#fbfdff;padding:12px 16px;margin:0 0 26px}
+.fc .fc-head p{font-size:12.5px;line-height:1.9;margin:0 0 4px}
+.fc .fc-head p:last-child{margin-bottom:0}
+
+/* 근거 태그 */
+.fc .ev{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.01em;padding:0 6px;border-radius:5px;vertical-align:1px;margin:0 1px;white-space:nowrap;background:#eef2f6;color:#4d5d6e;line-height:1.7}
+.fc .ev.p{background:#e6f1ff;color:#1754a0}
+.fc .ev.t{background:#f1ecff;color:#5a3fb0}
+.fc .ev.r{background:#e9f6ef;color:#1c6b4a}
+.fc .ev.c{background:#fff3df;color:#935008}
+
+/* 표 */
+.fc .tw{overflow-x:auto;border:1px solid var(--f-line);border-radius:12px;margin:16px 0 30px;background:#fff;scrollbar-width:thin}
+.fc .tw table{display:table;width:100%;min-width:640px;margin:0;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+.fc .tw th{background:#edf3f9;color:#24476a;text-align:left;padding:10px 12px;border-bottom:1px solid #cfdcea;font-weight:700;white-space:nowrap}
+.fc .tw td{padding:10px 12px;vertical-align:top;border-bottom:1px solid #e6edf3;color:#24384a;white-space:normal}
+.fc .tw tr:last-child td{border-bottom:0}
+.fc .tw td:first-child{font-weight:650;color:#234a6c}
+
+/* 콜아웃(인용 블록) */
+.fc .note{border-left:3px solid var(--f-acc);background:var(--f-accbg);border-radius:0 10px 10px 0;padding:14px 18px;margin:18px 0 26px}
+.fc .note p{margin:0 0 8px;font-size:14.5px;line-height:1.78;color:#24384d}
+.fc .note p:last-child{margin-bottom:0}
+
+/* 수식·계산 블록 */
+.fc pre.eq{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;line-height:1.75;padding:14px 16px;background:#f5f8fb;border:1px solid #e3ebf2;border-radius:10px;margin:14px 0 22px;overflow-x:auto;white-space:pre;color:#14283d}
+
+/* 그림 */
+.fc figure.dfig{margin:22px 0 30px;padding:16px 14px 12px;border:1px solid #d9e5f0;border-radius:14px;background:#fbfdff}
+.fc figure.dfig svg{width:100%;height:auto;display:block;max-width:100%}
+.fc figure.dfig img{display:block;width:auto;height:auto;max-width:100%;max-height:640px;margin:0 auto;background:#fff}
+.fc figure.dfig figcaption{font-size:12.5px;color:var(--f-mute);line-height:1.7;margin:10px 0 0}
+.fc figure.dfig .credit{font-size:11.5px;color:#7a8a99;line-height:1.6;margin:6px 0 0;overflow-wrap:anywhere}
+.fc figure.dfig .badge{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:5px;background:#fff1d9;color:#7b4f13;margin-right:6px}
+.fc figure.dfig .badge.own{background:#e9f6ef;color:#1c6b4a}
+
+/* 자가 점검 */
+.fc details.qa{border:1px solid var(--f-line);border-radius:11px;background:#fff;margin:10px 0;padding:0 16px}
+.fc details.qa summary{cursor:pointer;padding:13px 0;font-size:15px;font-weight:650;color:#1d3b59;line-height:1.6}
+.fc details.qa[open] summary{border-bottom:1px dashed #d5e0ea}
+.fc details.qa .a{padding:12px 0 14px}
+.fc details.qa .a p{font-size:14.5px;margin:0 0 8px}
+
+/* 자료 수집 기록 */
+.fc details.srcs{border:1px solid var(--f-line);border-radius:12px;background:#fbfdff;margin:46px 0 0;padding:0 18px}
+.fc details.srcs>summary{cursor:pointer;padding:15px 0;font-size:15px;font-weight:700;color:#1d3b59}
+.fc details.srcs[open]>summary{border-bottom:1px solid var(--f-line);margin-bottom:8px}
+.fc details.srcs h4{font-size:15px;margin:26px 0 8px}
+.fc details.srcs p,.fc details.srcs li{font-size:13.5px;line-height:1.75}
+.fc details.srcs .tw table{font-size:12.5px;min-width:860px}
+.fc details.srcs .tw td{overflow-wrap:anywhere}
+.fc .rev{font-size:12px;color:var(--f-mute);border-top:1px solid var(--f-line);padding-top:14px;margin-top:34px}
+
+@media(max-width:700px){
+ .fc pre.eq{font-size:12.5px}
+ .fc .tw table{font-size:12.5px}
+}
+
+/* 수식 (2026-10-15): $…$와 $$…$$를 MathML로 조판한다 */
+.fc math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math","Noto Sans Math",math;color:#14283d}
+.fc p math,.fc li math,.fc td math,.fc figcaption math,.fc .note math{font-size:1.08em}
+.fc .eqs{margin:16px 0 22px;padding:10px 16px;background:#f7f9fc;border:1px solid #e3ebf2;border-radius:10px;overflow-x:auto}
+.fc .eqs math[display="block"]{font-size:1.18em;margin:.45em 0;min-width:max-content}
+.math-figure math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math}
+@media (prefers-color-scheme:dark){.fc .eqs{background:transparent}}

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" role="img" aria-label="sp2, sp3, 수소를 꼭짓점으로 하는 삼원 상도 모식도">
+<style>.c1{font:700 15px system-ui,sans-serif;fill:#1b3550}.c2{font:600 12.5px system-ui,sans-serif;fill:#22415c}.c3{font:500 11.5px system-ui,sans-serif;fill:#607185}.c4{font:650 12px system-ui,sans-serif;fill:#a8560c}.c5{font:650 12px system-ui,sans-serif;fill:#1754a0}</style>
+<polygon points="320,40 90,390 550,390" fill="#f6f9fc" stroke="#9db1c5" stroke-width="1.5"/>
+<!-- no film region -->
+<polygon points="469.5,267.5 389,390 550,390" fill="#e4e9ee"/>
+<line x1="469.5" y1="267.5" x2="389" y2="390" stroke="#9db1c5" stroke-dasharray="5 4"/>
+<text class="c3" x="472" y="362" text-anchor="middle">막 형성 안 됨</text>
+<text class="c3" x="472" y="377" text-anchor="middle">(기체·액체 탄화수소)</text>
+<!-- regions -->
+<ellipse cx="290" cy="122" rx="30" ry="20" fill="#cfe0f3" stroke="#7fa3cc"/>
+<text class="c2" x="290" y="126" text-anchor="middle">ta-C</text>
+<ellipse cx="352" cy="172" rx="38" ry="22" fill="#d8e9d9" stroke="#86b28a"/>
+<text class="c2" x="352" y="176" text-anchor="middle">ta-C:H</text>
+<ellipse cx="322" cy="238" rx="46" ry="24" fill="#f3e3c3" stroke="#cfa860"/>
+<text class="c2" x="322" y="235" text-anchor="middle">DLCH</text>
+<text class="c3" x="322" y="250" text-anchor="middle">H 20–40 %</text>
+<ellipse cx="408" cy="262" rx="40" ry="24" fill="#f4d9d5" stroke="#cf8f86" transform="rotate(-18 408 262)"/>
+<text class="c2" x="412" y="259" text-anchor="middle">PLCH</text>
+<text class="c3" x="414" y="274" text-anchor="middle">H 40–60 %</text>
+<ellipse cx="205" cy="332" rx="62" ry="27" fill="#d9dde3" stroke="#8a97a6"/>
+<text class="c2" x="205" y="329" text-anchor="middle">GLCH</text>
+<text class="c3" x="205" y="344" text-anchor="middle">H &lt; 20 %</text>
+<!-- arrows -->
+<defs>
+<marker id="aw1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#a8560c"/></marker>
+<marker id="aw2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#1754a0"/></marker>
+</defs>
+<path d="M392,296 Q330,338 276,338" fill="none" stroke="#a8560c" stroke-width="2.2" marker-end="url(#aw1)"/>
+<text class="c4" x="352" y="352" text-anchor="middle">증착 온도 ↑</text>
+<text class="c3" x="352" y="367" text-anchor="middle">수소 방출 · sp² 군집</text>
+<path d="M404,234 Q408,208 390,192" fill="none" stroke="#1754a0" stroke-width="2.2" marker-end="url(#aw2)"/>
+<text class="c5" x="505" y="200" text-anchor="middle">이온 에너지 ↑</text>
+<text class="c3" x="505" y="215" text-anchor="middle">치밀화 · sp³ C–C</text>
+<!-- corners -->
+<text class="c1" x="320" y="28" text-anchor="middle">sp³</text>
+<text class="c1" x="70" y="410" text-anchor="middle">sp²</text>
+<text class="c1" x="570" y="410" text-anchor="middle">H</text>
+<text class="c3" x="60" y="426" text-anchor="middle">Graphite 쪽</text>
+<text class="c3" x="320" y="14" text-anchor="middle">Diamond 쪽</text>
+</svg>

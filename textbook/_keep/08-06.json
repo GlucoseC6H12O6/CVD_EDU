@@ -1,0 +1,14 @@
+{
+"head": [
+"<div class=\"headlines\">PART 08 · CHAPTER 08-06</div>",
+"<h1 class=\"chapter-heading\" id=\"s-08-06\">Process Simulation &amp; Optimization</h1>"
+],
+"keep": [
+"<div class=\"math-figure\"><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mtext>min f(x), subject to g(x)≤0</mtext></math></div>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-08-06-reference-0\">",
+"<h2 class=\"section-heading\" id=\"s-08-06-reference-1\">",
+"<h2 class=\"section-heading\" id=\"s-08-06-reference-2\">"
+]
+}

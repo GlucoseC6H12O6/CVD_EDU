@@ -1,0 +1,15 @@
+{
+"head": [
+"<div class=\"headlines\">PART 00 · CHAPTER 00-09</div>",
+"<h1 class=\"chapter-heading\" id=\"s-00-09\">Measurement &amp; Data Fundamentals — 숫자 하나에 무엇이 담겨 있는가</h1>"
+],
+"keep": [
+"<figure class=\"concept-figure\" id=\"binFigure\"><figcaption>실습 그림 · 같은 측정값, 다른 Histogram Bin</figcaption><p class=\"concept-intro\">동일한 <strong>가상 두께 측정값</strong>을 서로 다른 Bin 폭으로 묶어 보세요. 데이터는 바뀌지 않고 모양만 바뀝니다.</p><label class=\"figure-slider\">Bin 폭 <span id=\"binLabel\">10 Å</span><input id=\"binInput\" max=\"20\" min=\"5\" step=\"5\" type=\"range\" value=\"10\"/></label><svg aria-label=\"선택한 Bin 폭에 따른 가상 두께 데이터 히스토그램\" id=\"binSvg\" role=\"img\" viewbox=\"0 0 740 260\"></svg><p class=\"viz-caveat\">이 그림의 데이터는 연습용 가상값이며, 실제 Wafer Thickness 분포가 아닙니다.</p></figure>",
+"<p><math aria-label=\"Sample standard deviation\" display=\"block\"><mrow><mi>s</mi><mo>=</mo><msqrt><mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msup><mrow><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mover><mi>x</mi><mo>¯</mo></mover><mo>)</mo></mrow><mn>2</mn></msup></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mfrac></msqrt></mrow></math></p>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-00-09-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-09-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-09-references\">"
+]
+}

@@ -1,0 +1,14 @@
+{
+"head": [
+"<div class=\"headlines\">PART 01 · CHAPTER 01-08</div>",
+"<h1 class=\"chapter-heading\" id=\"s-01-08\">Plasma Fundamentals</h1>"
+],
+"keep": [
+"<div class=\"math-figure\"><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mtext>1 eV = 1.602176634×10⁻¹⁹ J</mtext></math></div>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-01-08-reference-0\">",
+"<h2 class=\"section-heading\" id=\"s-01-08-reference-1\">",
+"<h2 class=\"section-heading\" id=\"s-01-08-reference-2\">"
+]
+}

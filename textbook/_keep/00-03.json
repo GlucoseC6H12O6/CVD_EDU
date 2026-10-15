@@ -1,0 +1,14 @@
+{
+"head": [
+"<div class=\"headlines\">PART 00 · CHAPTER 00-03</div>",
+"<h1 class=\"chapter-heading\" id=\"s-00-03\">Chemical Bonding &amp; Material Structure — 왜 같은 조성의 막도 다를까</h1>"
+],
+"keep": [
+"<figure class=\"concept-figure\"><figcaption>그림 · 결정질과 비정질 구조의 장거리 규칙성 비교</figcaption><svg aria-label=\"왼쪽은 규칙적 격자 배치, 오른쪽은 가까운 거리의 결합은 있지만 장거리 주기성이 부족한 원자 배열\" role=\"img\" viewbox=\"0 0 800 255\"><rect fill=\"#f2f6fa\" height=\"192\" rx=\"12\" width=\"345\" x=\"25\" y=\"35\"></rect><rect fill=\"#f2f6fa\" height=\"192\" rx=\"12\" width=\"345\" x=\"429\" y=\"35\"></rect><text fill=\"#234b70\" font-size=\"17\" font-weight=\"700\" text-anchor=\"middle\" x=\"195\" y=\"27\">결정질 · 반복 배열</text><text fill=\"#234b70\" font-size=\"17\" font-weight=\"700\" text-anchor=\"middle\" x=\"601\" y=\"27\">비정질 · 국소 결합</text><g id=\"xtalAtoms\"></g><g id=\"amorphAtoms\"></g></svg><p class=\"viz-caveat\">2차원 단순 배치도이며 실제 SiO₂·SiN·ACL 원자 배열이나 결합각을 재현한 것은 아닙니다.</p></figure>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-00-03-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-03-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-03-references\">"
+]
+}

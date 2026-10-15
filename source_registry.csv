@@ -1,0 +1,20 @@
+chapter,film,source_url,figure_locator,resource_status
+03-01,"ACL",https://doi.org/10.1016/S0927-796X(02)00005-0,"Robertson (2002) Fig. 2; 원본 재현이 아닌 구조 개념도",source_link_not_figure_file
+03-02,"SiB",https://patents.google.com/patent/US20240339316A1/en,"US20240339316A1 (특허); 데이터 미검증",source_link_not_figure_file
+03-03,"SiC / SiCH",https://pmc.ncbi.nlm.nih.gov/articles/PMC5090375/,"PECVD SiCH precursor-structure study; original figures require capture",source_link_not_figure_file
+03-04,"SiBN / SiBCN",https://research.ibm.com/publications/use-of-sibn-and-sibon-films-prepared-by-plasma-enhanced-chemical-vapor-deposition-from-borazine-as-interconnection-dielectrics,"IBM SiBN/SiBON PECVD; SiBCN 별도 문헌 필요",source_link_not_figure_file
+03-05,"USG",https://doi.org/10.1016/0022-0248(94)90304-2,"TEOS/O₃ kinetic study; publication conditions cross-check",source_link_not_figure_file
+03-06,"BPSG",https://doi.org/10.1023/A:1023916502417,"Vasilev (2003) Fig. 1 (단차 평탄화·Contact Rounding·Gap-fill)",source_link_not_figure_file
+03-07,"PSG / BSG",https://doi.org/10.1016/0169-4332(93)90620-Q,"B/ P-containing oxide annealing study; abstract",source_link_not_figure_file
+03-08,"SiON",https://doi.org/10.3390/coatings11111288,"Optical SiON study; Fig. verification required",source_link_not_figure_file
+03-09,"FSG",https://doi.org/10.1016/S0167-9317(96)00062-7,"FSG fluorine/stability experimental publication",source_link_not_figure_file
+03-10,"SiOC / SiCOH",https://pmc.ncbi.nlm.nih.gov/articles/PMC8125368/,"Open-access low-k pore and modulus research; original Figure extraction outstanding",source_link_not_figure_file
+03-11,"SiN",https://www.sciencedirect.com/science/article/pii/S0040609009000455,"SiNx bond composition vs RI study; FTIR bands",source_link_not_figure_file
+03-12,"SiCN",https://doi.org/10.3390/coatings12111767,"Ermakova (2022) Figs. 2, 3, 9",source_link_not_figure_file
+03-13,"a-Si",https://doi.org/10.1103/PhysRevB.36.3479,"a-Si:H metastable defect research",source_link_not_figure_file
+03-14,"Poly-Si",https://doi.org/10.1016/0038-1101(79)90005-4,"LPCVD poly-Si electrical property study",source_link_not_figure_file
+03-15,"SiGe & Epitaxy",https://pmc.ncbi.nlm.nih.gov/articles/PMC7466708/,"SEG SiGe composition and scaling Figure 17",source_link_not_figure_file
+03-16,"W",https://www.sciencedirect.com/science/article/pii/0040609089908080,"Selective LPCVD W kinetics and fill study",source_link_not_figure_file
+03-17,"TiN / WN / TaN",https://doi.org/10.1149/1.1837114,"TiN thermal CVD study (DOI bibliographic check pending)",source_link_not_figure_file
+03-18,"Mo / Ru",https://doi.org/10.1039/C4RA04701J,"Ru CVD precursor review; Mo experimental reference pending",source_link_not_figure_file
+03-19,"High-k",https://pmc.ncbi.nlm.nih.gov/articles/PMC5448919/,"High-k interfacial-layer EOT scaling review, Eq.(1)",source_link_not_figure_file

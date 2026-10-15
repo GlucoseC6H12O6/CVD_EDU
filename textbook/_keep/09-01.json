@@ -1,0 +1,14 @@
+{
+"head": [
+"<div class=\"headlines\">PART 09 · CHAPTER 09-01</div>",
+"<h1 class=\"chapter-heading\" id=\"s-09-01\">ACL Chamber Contamination</h1>"
+],
+"keep": [
+"<div class=\"math-figure\"><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mtext>same mesh/geometry; change one BC</mtext></math></div>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-09-01-reference-0\">",
+"<h2 class=\"section-heading\" id=\"s-09-01-reference-1\">",
+"<h2 class=\"section-heading\" id=\"s-09-01-reference-2\">"
+]
+}

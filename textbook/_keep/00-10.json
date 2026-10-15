@@ -1,0 +1,14 @@
+{
+"head": [
+"<div class=\"headlines\">PART 00 · CHAPTER 00-10</div>",
+"<h1 class=\"chapter-heading\" id=\"s-00-10\">Semiconductor Safety &amp; Engineering Practice — 안전과 재현성은 공정의 일부다</h1>"
+],
+"keep": [
+"<figure class=\"concept-figure\"><figcaption>그림 · 안전 판단은 장비의 한 지점에서 끝나지 않는다</figcaption><svg aria-label=\"가스 공급과 공정 챔버, 배기 처리와 작업 승인을 구분한 안전 개념도\" role=\"img\" viewbox=\"0 0 800 210\"><rect fill=\"#e5eff7\" height=\"70\" rx=\"10\" width=\"205\" x=\"15\" y=\"70\"></rect><rect fill=\"#edf0e7\" height=\"70\" rx=\"10\" width=\"205\" x=\"296\" y=\"70\"></rect><rect fill=\"#f3ebe6\" height=\"70\" rx=\"10\" width=\"205\" x=\"577\" y=\"70\"></rect><g fill=\"#355064\" font-size=\"17\" font-weight=\"700\" text-anchor=\"middle\"><text x=\"118\" y=\"100\">Gas Supply</text><text font-size=\"12\" font-weight=\"400\" x=\"118\" y=\"123\">SDS · Leak · Label</text><text x=\"398\" y=\"100\">Process Chamber</text><text font-size=\"12\" font-weight=\"400\" x=\"398\" y=\"123\">열 · RF · 압력 · 이동기구</text><text x=\"679\" y=\"100\">Exhaust</text><text font-size=\"12\" font-weight=\"400\" x=\"679\" y=\"123\">잔류물 · Abatement</text></g><path d=\"M223 105 h70 M504 105 h70\" stroke=\"#7d97a4\" stroke-width=\"4\"></path><path d=\"M285 96 l10 9 l-10 9 M566 96 l10 9 l-10 9\" fill=\"none\" stroke=\"#7d97a4\" stroke-width=\"3\"></path><text fill=\"#7d5140\" font-size=\"16\" font-weight=\"700\" text-anchor=\"middle\" x=\"400\" y=\"30\">위험성 평가·작업허가·승인된 절차가 전체 경로에 적용</text></svg><p class=\"viz-caveat\">교육용 개념도이며 실제 장비 안전 시스템 구조나 작업 순서를 표현하지 않습니다.</p></figure>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-00-10-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-10-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-10-references\">"
+]
+}

@@ -1,0 +1,14 @@
+{
+"head": [
+"<div class=\"headlines\">PART 00 · CHAPTER 00-02</div>",
+"<h1 class=\"chapter-heading\" id=\"s-00-02\">Atomic &amp; Molecular Fundamentals — 전구체 화학식을 읽는 방법</h1>"
+],
+"keep": [
+"<figure class=\"concept-figure\"><figcaption>그림 · 분자 속 원자 개수와 화학식의 관계</figcaption><svg aria-label=\"SiH4, O3, NH3 분자를 각각 원소별 원으로 나타낸 모식도\" role=\"img\" viewbox=\"0 0 800 245\"><g fill=\"#274359\" font-size=\"17\" font-weight=\"700\" text-anchor=\"middle\"><text x=\"142\" y=\"30\">SiH₄</text><text x=\"402\" y=\"30\">O₃</text><text x=\"652\" y=\"30\">NH₃</text></g><g stroke=\"#8fa3b6\" stroke-width=\"5\"><path d=\"M142 110 L97 72 M142 110 L187 72 M142 110 L97 150 M142 110 L187 150\"></path><path d=\"M365 118 L402 96 L442 118\" fill=\"none\"></path><path d=\"M652 102 L605 70 M652 102 L702 75 M652 102 L652 164\"></path></g><g stroke=\"white\" stroke-width=\"2\"><circle cx=\"142\" cy=\"110\" fill=\"#bf9b5f\" r=\"23\"></circle><circle cx=\"97\" cy=\"72\" fill=\"#d2d9df\" r=\"14\"></circle><circle cx=\"187\" cy=\"72\" fill=\"#d2d9df\" r=\"14\"></circle><circle cx=\"97\" cy=\"150\" fill=\"#d2d9df\" r=\"14\"></circle><circle cx=\"187\" cy=\"150\" fill=\"#d2d9df\" r=\"14\"></circle><circle cx=\"365\" cy=\"118\" fill=\"#5e90b8\" r=\"21\"></circle><circle cx=\"402\" cy=\"96\" fill=\"#5e90b8\" r=\"21\"></circle><circle cx=\"442\" cy=\"118\" fill=\"#5e90b8\" r=\"21\"></circle><circle cx=\"652\" cy=\"102\" fill=\"#8ba5aa\" r=\"23\"></circle><circle cx=\"605\" cy=\"70\" fill=\"#d2d9df\" r=\"14\"></circle><circle cx=\"702\" cy=\"75\" fill=\"#d2d9df\" r=\"14\"></circle><circle cx=\"652\" cy=\"164\" fill=\"#d2d9df\" r=\"14\"></circle></g><g fill=\"#506b81\" font-size=\"14\" text-anchor=\"middle\"><text x=\"142\" y=\"211\">Si 1 · H 4</text><text x=\"402\" y=\"211\">O 3</text><text x=\"652\" y=\"211\">N 1 · H 3</text></g></svg><p class=\"viz-caveat\">원자의 종류와 수만 표현한 개념 그림입니다. 실제 결합각·분자 궤도·O₃의 전자구조를 정확히 나타내지 않습니다.</p></figure>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-00-02-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-02-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-02-references\">"
+]
+}

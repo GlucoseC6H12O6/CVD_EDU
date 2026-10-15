@@ -1,0 +1,15 @@
+{
+"head": [
+"<div class=\"headlines\">PART 01 · CHAPTER 01-03</div>",
+"<h1 class=\"chapter-heading\" id=\"s-01-03\">Reaction Kinetics</h1>"
+],
+"keep": [
+"<figure class=\"eng-sim\" data-sim=\"01-03\"><figcaption>직접 계산 · 반응속도상수의 온도 민감도</figcaption><p>두 입력값을 조절하면 아래 결과가 즉시 계산됩니다. <strong>실제 실험 데이터가 아닌 교육용 단순 모델</strong>입니다.</p><div class=\"sim-inputs\"><label>Ea (kJ/mol) <strong data-sim-a=\"\">60</strong><input data-sim-in-a=\"\" max=\"150\" min=\"20\" step=\"1\" type=\"range\" value=\"60\"/></label><label>T₂ (K) <strong data-sim-b=\"\">550</strong><input data-sim-in-b=\"\" max=\"850\" min=\"350\" step=\"1\" type=\"range\" value=\"550\"/></label></div><div aria-live=\"polite\" class=\"sim-result\" data-sim-result=\"\" role=\"status\">계산 준비</div><svg aria-label=\"모델 계산 결과의 상대 크기 막대그래프\" data-sim-svg=\"\" role=\"img\" viewbox=\"0 0 680 190\"></svg><p class=\"viz-note\">계산 입력값과 모델 가정은 해당 Chapter 설명에 한정됩니다. 실제 막질의 보정된 물성이나 Recipe를 뜻하지 않습니다.</p></figure>",
+"<div class=\"math-figure\"><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>k</mi><mo>=</mo><mi>A</mi><msup><mi>e</mi><mrow><mo>−</mo><mfrac><mrow><msub><mi>E</mi><mi>a</mi></msub></mrow><mrow><mi>R</mi><mi>T</mi></mrow></mfrac></mrow></msup></math></div>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-01-03-reference-0\">",
+"<h2 class=\"section-heading\" id=\"s-01-03-reference-1\">",
+"<h2 class=\"section-heading\" id=\"s-01-03-reference-2\">"
+]
+}

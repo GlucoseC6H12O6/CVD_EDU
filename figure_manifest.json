@@ -1,0 +1,173 @@
+[
+  {
+    "chapter": "03-01",
+    "film": "ACL",
+    "visual": "sp²–sp³–H 삼원상도",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://doi.org/10.1016/S0927-796X(02)00005-0",
+    "paper_figure": "not_embedded",
+    "ref": "Robertson (2002) Fig. 2; 원본 재현이 아닌 구조 개념도"
+  },
+  {
+    "chapter": "03-02",
+    "film": "SiB",
+    "visual": "막질 명칭과 원자비의 관계",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://patents.google.com/patent/US20240339316A1/en",
+    "paper_figure": "not_embedded",
+    "ref": "US20240339316A1 (특허); 데이터 미검증"
+  },
+  {
+    "chapter": "03-03",
+    "film": "SiC / SiCH",
+    "visual": "수소·탄소 편입과 확산 장벽의 양면성",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5090375/",
+    "paper_figure": "not_embedded",
+    "ref": "PECVD SiCH precursor-structure study; original figures require capture"
+  },
+  {
+    "chapter": "03-04",
+    "film": "SiBN / SiBCN",
+    "visual": "원소 편입과 결합망의 상충관계",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://research.ibm.com/publications/use-of-sibn-and-sibon-films-prepared-by-plasma-enhanced-chemical-vapor-deposition-from-borazine-as-interconnection-dielectrics",
+    "paper_figure": "not_embedded",
+    "ref": "IBM SiBN/SiBON PECVD; SiBCN 별도 문헌 필요"
+  },
+  {
+    "chapter": "03-05",
+    "film": "USG",
+    "visual": "반응속도·유입·표면 성장의 경쟁",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://doi.org/10.1016/0022-0248(94)90304-2",
+    "paper_figure": "not_embedded",
+    "ref": "TEOS/O₃ kinetic study; publication conditions cross-check"
+  },
+  {
+    "chapter": "03-06",
+    "film": "BPSG",
+    "visual": "B/P–점성–Reflow–형상의 연결",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://doi.org/10.1023/A:1023916502417",
+    "paper_figure": "not_embedded",
+    "ref": "Vasilev (2003) Fig. 1 (단차 평탄화·Contact Rounding·Gap-fill)"
+  },
+  {
+    "chapter": "03-07",
+    "film": "PSG / BSG",
+    "visual": "도핑 유리의 목적과 화학적 안정성",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://doi.org/10.1016/0169-4332(93)90620-Q",
+    "paper_figure": "not_embedded",
+    "ref": "B/ P-containing oxide annealing study; abstract"
+  },
+  {
+    "chapter": "03-08",
+    "film": "SiON",
+    "visual": "O/N 조성과 광학 응답의 연결",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://doi.org/10.3390/coatings11111288",
+    "paper_figure": "not_embedded",
+    "ref": "Optical SiON study; Fig. verification required"
+  },
+  {
+    "chapter": "03-09",
+    "film": "FSG",
+    "visual": "낮은 k와 F 안정성의 경쟁",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://doi.org/10.1016/S0167-9317(96)00062-7",
+    "paper_figure": "not_embedded",
+    "ref": "FSG fluorine/stability experimental publication"
+  },
+  {
+    "chapter": "03-10",
+    "film": "SiOC / SiCOH",
+    "visual": "기공과 전기·기계 성능의 균형",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8125368/",
+    "paper_figure": "not_embedded",
+    "ref": "Open-access low-k pore and modulus research; original Figure extraction outstanding"
+  },
+  {
+    "chapter": "03-11",
+    "film": "SiN",
+    "visual": "결합·수소·광학 특성의 동시 해석",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://www.sciencedirect.com/science/article/pii/S0040609009000455",
+    "paper_figure": "not_embedded",
+    "ref": "SiNx bond composition vs RI study; FTIR bands"
+  },
+  {
+    "chapter": "03-12",
+    "film": "SiCN",
+    "visual": "반응 분위기에 따른 C/N 편입과 유전율",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://doi.org/10.3390/coatings12111767",
+    "paper_figure": "not_embedded",
+    "ref": "Ermakova (2022) Figs. 2, 3, 9"
+  },
+  {
+    "chapter": "03-13",
+    "film": "a-Si",
+    "visual": "수소 패시베이션과 결함 준위",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://doi.org/10.1103/PhysRevB.36.3479",
+    "paper_figure": "not_embedded",
+    "ref": "a-Si:H metastable defect research"
+  },
+  {
+    "chapter": "03-14",
+    "film": "Poly-Si",
+    "visual": "결정립계와 전기적 이동",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://doi.org/10.1016/0038-1101(79)90005-4",
+    "paper_figure": "not_embedded",
+    "ref": "LPCVD poly-Si electrical property study"
+  },
+  {
+    "chapter": "03-15",
+    "film": "SiGe & Epitaxy",
+    "visual": "조성에 따른 격자 부정합과 Strain",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7466708/",
+    "paper_figure": "not_embedded",
+    "ref": "SEG SiGe composition and scaling Figure 17"
+  },
+  {
+    "chapter": "03-16",
+    "film": "W",
+    "visual": "핵생성·연속 성장·Void 형성",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://www.sciencedirect.com/science/article/pii/0040609089908080",
+    "paper_figure": "not_embedded",
+    "ref": "Selective LPCVD W kinetics and fill study"
+  },
+  {
+    "chapter": "03-17",
+    "film": "TiN / WN / TaN",
+    "visual": "확산 Barrier의 연속막 형성",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://doi.org/10.1149/1.1837114",
+    "paper_figure": "not_embedded",
+    "ref": "TiN thermal CVD study (DOI bibliographic check pending)"
+  },
+  {
+    "chapter": "03-18",
+    "film": "Mo / Ru",
+    "visual": "두께 축소 시 저항률과 재료 선택",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://doi.org/10.1039/C4RA04701J",
+    "paper_figure": "not_embedded",
+    "ref": "Ru CVD precursor review; Mo experimental reference pending"
+  },
+  {
+    "chapter": "03-19",
+    "film": "High-k",
+    "visual": "EOT와 실제 막 두께의 분리",
+    "type": "original_educational_concept_svg",
+    "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5448919/",
+    "paper_figure": "not_embedded",
+    "ref": "High-k interfacial-layer EOT scaling review, Eq.(1)"
+  }
+]

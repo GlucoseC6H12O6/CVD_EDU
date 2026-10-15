@@ -1,0 +1,14 @@
+{
+"head": [
+"<div class=\"headlines\">PART 01 · CHAPTER 01-06</div>",
+"<h1 class=\"chapter-heading\" id=\"s-01-06\">Heat Transfer</h1>"
+],
+"keep": [
+"<div class=\"math-figure\"><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>q″</mi><mo>=</mo><mo>−</mo><mi>k</mi><mfrac><mrow><mo>∂</mo><mi>T</mi></mrow><mrow><mo>∂</mo><mi>x</mi></mrow></mfrac></math></div>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-01-06-reference-0\">",
+"<h2 class=\"section-heading\" id=\"s-01-06-reference-1\">",
+"<h2 class=\"section-heading\" id=\"s-01-06-reference-2\">"
+]
+}

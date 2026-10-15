@@ -1,0 +1,17 @@
+{
+"head": [
+"<div class=\"headlines\">PART 04 · CHAPTER 04-01</div>",
+"<h1 class=\"chapter-heading\" id=\"s-04-01\">Recipe Architecture — Step은 시간에 따라 물리 상태를 만든다</h1>"
+],
+"keep": [
+"<hr/>"
+],
+"h2": [
+"<h2 class=\"section-heading\" data-section=\"1\" id=\"s-04-01.01\">",
+"<h2 class=\"section-heading\" data-section=\"2\" id=\"s-04-01.02\">",
+"<h2 class=\"section-heading\" data-section=\"3\" id=\"s-04-01.03\">",
+"<h2 class=\"section-heading\" data-section=\"4\" id=\"s-04-01.04\">",
+"<h2 class=\"section-heading\" data-section=\"5\" id=\"s-04-01.05\">",
+"<h2 class=\"section-heading\" data-section=\"6\" id=\"s-04-01.06\">"
+]
+}

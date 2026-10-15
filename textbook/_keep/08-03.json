@@ -1,0 +1,16 @@
+{
+"head": [
+"<div class=\"headlines\">PART 08 · CHAPTER 08-03</div>",
+"<h1 class=\"chapter-heading\" id=\"s-08-03\">Computational Fluid Dynamics</h1>"
+],
+"keep": [
+"<figure class=\"chem-figure\"><figcaption>Computational Fluid Dynamics · 개념적 공정 경로</figcaption><div class=\"chem-scroller\"><svg aria-label=\"Computational Fluid Dynamics의 재료 및 반응 단계 관계도\" role=\"img\" viewbox=\"0 0 762 98\"><rect fill=\"#edf5f8\" height=\"58\" rx=\"9\" stroke=\"#cfdee4\" width=\"170\" x=\"12\" y=\"18\"></rect><text fill=\"#204a63\" font-size=\"13\" text-anchor=\"middle\" x=\"97\" y=\"51.0\">Geometry·BC</text><path d=\"M185 47 h15\" stroke=\"#6790a7\" stroke-width=\"2\"></path><path d=\"M195 43 l5 4 l-5 4\" fill=\"none\" stroke=\"#6790a7\" stroke-width=\"2\"></path><rect fill=\"#edf5f8\" height=\"58\" rx=\"9\" stroke=\"#cfdee4\" width=\"170\" x=\"200\" y=\"18\"></rect><text fill=\"#204a63\" font-size=\"13\" text-anchor=\"middle\" x=\"285\" y=\"51.0\">Governing Eq.</text><path d=\"M373 47 h15\" stroke=\"#6790a7\" stroke-width=\"2\"></path><path d=\"M383 43 l5 4 l-5 4\" fill=\"none\" stroke=\"#6790a7\" stroke-width=\"2\"></path><rect fill=\"#edf4f0\" height=\"58\" rx=\"9\" stroke=\"#cfdee4\" width=\"170\" x=\"388\" y=\"18\"></rect><text fill=\"#204a63\" font-size=\"13\" text-anchor=\"middle\" x=\"473\" y=\"51.0\">Mesh/Solver</text><path d=\"M561 47 h15\" stroke=\"#6790a7\" stroke-width=\"2\"></path><path d=\"M571 43 l5 4 l-5 4\" fill=\"none\" stroke=\"#6790a7\" stroke-width=\"2\"></path><rect fill=\"#edf4f0\" height=\"58\" rx=\"9\" stroke=\"#cfdee4\" width=\"170\" x=\"576\" y=\"18\"></rect><text fill=\"#204a63\" font-size=\"13\" text-anchor=\"middle\" x=\"661\" y=\"51.0\">Validation</text></svg></div><p class=\"viz-note\">공정 특성을 이해하기 위한 모식도. 실제 Reactor 내부의 검증된 단일 반응경로나 분사 구조를 뜻하지 않습니다.</p></figure>",
+"<figure class=\"eng-sim\" data-sim=\"08-03\"><figcaption>직접 계산 · 격자 수렴 예시: 수치해와 외삽</figcaption><p>두 입력값을 조절하면 아래 결과가 즉시 계산됩니다. <strong>실제 실험 데이터가 아닌 교육용 단순 모델</strong>입니다.</p><div class=\"sim-inputs\"><label>Grid cells (×1k) <strong data-sim-a=\"\">40</strong><input data-sim-in-a=\"\" max=\"200\" min=\"5\" step=\"1\" type=\"range\" value=\"40\"/></label><label>격자 오차 계수 <strong data-sim-b=\"\">1</strong><input data-sim-in-b=\"\" max=\"4\" min=\"0.1\" step=\".1\" type=\"range\" value=\"1\"/></label></div><div aria-live=\"polite\" class=\"sim-result\" data-sim-result=\"\" role=\"status\">계산 준비</div><svg aria-label=\"모델 계산 결과의 상대 크기 막대그래프\" data-sim-svg=\"\" role=\"img\" viewbox=\"0 0 680 190\"></svg><p class=\"viz-note\">계산 입력값과 모델 가정은 해당 Chapter 설명에 한정됩니다. 실제 막질의 보정된 물성이나 Recipe를 뜻하지 않습니다.</p></figure>",
+"<div class=\"math-figure\"><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mtext>∇·u = 0 (applicability checked)</mtext></math></div>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-08-03-reference-0\">",
+"<h2 class=\"section-heading\" id=\"s-08-03-reference-1\">",
+"<h2 class=\"section-heading\" id=\"s-08-03-reference-2\">"
+]
+}

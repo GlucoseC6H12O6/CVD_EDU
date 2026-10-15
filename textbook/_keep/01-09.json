@@ -1,0 +1,15 @@
+{
+"head": [
+"<div class=\"headlines\">PART 01 · CHAPTER 01-09</div>",
+"<h1 class=\"chapter-heading\" id=\"s-01-09\">Gas-phase Chemistry &amp; Reactor Transport</h1>"
+],
+"keep": [
+"<figure class=\"chem-figure\"><figcaption>Gas-phase Chemistry &amp; Reactor Transport · 개념적 공정 경로</figcaption><div class=\"chem-scroller\"><svg aria-label=\"Gas-phase Chemistry &amp; Reactor Transport의 재료 및 반응 단계 관계도\" role=\"img\" viewbox=\"0 0 762 98\"><rect fill=\"#edf5f8\" height=\"58\" rx=\"9\" stroke=\"#cfdee4\" width=\"170\" x=\"12\" y=\"18\"></rect><text fill=\"#204a63\" font-size=\"13\" text-anchor=\"middle\" x=\"97\" y=\"51.0\">기상 혼합</text><path d=\"M185 47 h15\" stroke=\"#6790a7\" stroke-width=\"2\"></path><path d=\"M195 43 l5 4 l-5 4\" fill=\"none\" stroke=\"#6790a7\" stroke-width=\"2\"></path><rect fill=\"#edf5f8\" height=\"58\" rx=\"9\" stroke=\"#cfdee4\" width=\"170\" x=\"200\" y=\"18\"></rect><text fill=\"#204a63\" font-size=\"13\" text-anchor=\"middle\" x=\"285\" y=\"51.0\">중간종 생성·소모</text><path d=\"M373 47 h15\" stroke=\"#6790a7\" stroke-width=\"2\"></path><path d=\"M383 43 l5 4 l-5 4\" fill=\"none\" stroke=\"#6790a7\" stroke-width=\"2\"></path><rect fill=\"#edf4f0\" height=\"58\" rx=\"9\" stroke=\"#cfdee4\" width=\"170\" x=\"388\" y=\"18\"></rect><text fill=\"#204a63\" font-size=\"13\" text-anchor=\"middle\" x=\"473\" y=\"51.0\">Wafer 표면 도달</text><path d=\"M561 47 h15\" stroke=\"#6790a7\" stroke-width=\"2\"></path><path d=\"M571 43 l5 4 l-5 4\" fill=\"none\" stroke=\"#6790a7\" stroke-width=\"2\"></path><rect fill=\"#edf4f0\" height=\"58\" rx=\"9\" stroke=\"#cfdee4\" width=\"170\" x=\"576\" y=\"18\"></rect><text fill=\"#204a63\" font-size=\"13\" text-anchor=\"middle\" x=\"661\" y=\"51.0\">성장·입자 경쟁</text></svg></div><p class=\"viz-note\">공정 특성을 이해하기 위한 모식도. 실제 Reactor 내부의 검증된 단일 반응경로나 분사 구조를 뜻하지 않습니다.</p></figure>",
+"<div class=\"math-figure\"><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mtext>축적 = 유입 − 유출 + 생성 − 소모</mtext></math></div>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-01-09-reference-0\">",
+"<h2 class=\"section-heading\" id=\"s-01-09-reference-1\">",
+"<h2 class=\"section-heading\" id=\"s-01-09-reference-2\">"
+]
+}

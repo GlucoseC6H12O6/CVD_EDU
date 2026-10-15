@@ -1,0 +1,15 @@
+{
+"head": [
+"<div class=\"headlines\">PART 00 · CHAPTER 00-06</div>",
+"<h1 class=\"chapter-heading\" id=\"s-00-06\">Basic Physics &amp; Energy — 온도·압력·열을 구별하기</h1>"
+],
+"keep": [
+"<figure class=\"concept-figure\"><figcaption>그림 · Heater Setpoint와 실제 Wafer 온도 사이의 열 경로</figcaption><svg aria-label=\"히터, 접촉 경로, 웨이퍼, 기체 및 챔버벽 사이의 열전달\" role=\"img\" viewbox=\"0 0 800 215\"><rect fill=\"#cc9271\" height=\"44\" rx=\"12\" width=\"500\" x=\"150\" y=\"140\"></rect><text fill=\"white\" font-size=\"18\" text-anchor=\"middle\" x=\"400\" y=\"167\">Heater · 센서 제어값</text><rect fill=\"#84a0af\" height=\"30\" rx=\"7\" width=\"500\" x=\"150\" y=\"57\"></rect><text fill=\"white\" font-size=\"17\" text-anchor=\"middle\" x=\"400\" y=\"77\">Wafer · 실제 표면 온도</text><path d=\"M240 135 V95 M400 135 V95 M560 135 V95\" stroke=\"#ae8152\" stroke-dasharray=\"8 6\" stroke-width=\"5\"></path><path d=\"M240 95 l-10 12 m10 -12 l10 12 M400 95 l-10 12 m10 -12 l10 12 M560 95 l-10 12 m10 -12 l10 12\" fill=\"none\" stroke=\"#ae8152\" stroke-width=\"2\"></path><text fill=\"#725d44\" font-size=\"13\" text-anchor=\"middle\" x=\"400\" y=\"117\">전도 · 접촉 열저항</text><path d=\"M176 47 l-15 -33 M624 47 l15 -33\" stroke=\"#5f99b6\" stroke-width=\"3\"></path><text fill=\"#426c86\" font-size=\"13\" text-anchor=\"middle\" x=\"400\" y=\"20\">기체·벽과 열교환 (대류·복사)</text></svg><p class=\"viz-caveat\">열 이동의 방향과 크기는 실제 온도·표면 특성·압력 조건에 따라 달라집니다.</p></figure>",
+"<p><math aria-label=\"Pressure equals force divided by area\" display=\"block\"><mrow><mi>P</mi><mo>=</mo><mfrac><mi>F</mi><mi>A</mi></mfrac></mrow></math></p>"
+],
+"h2": [
+"<h2 class=\"section-heading\" id=\"s-00-06-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-06-practice\">",
+"<h2 class=\"section-heading\" id=\"s-00-06-references\">"
+]
+}

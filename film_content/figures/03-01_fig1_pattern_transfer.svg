@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 0 900 372" role="img" aria-label="다층 하드마스크의 패턴 전사 4단계 단면 모식도">
+<style>.t1{font:650 14px system-ui,sans-serif;fill:#1b3550}.t2{font:500 12px system-ui,sans-serif;fill:#3c5269}.t3{font:500 11.5px system-ui,sans-serif;fill:#607185}.lg{font:500 12px system-ui,sans-serif;fill:#3c5269}</style>
+<!-- panel 1 -->
+<g transform="translate(20,0)">
+ <text class="t1" x="100" y="30" text-anchor="middle">① 노광·현상</text>
+ <rect x="0" y="48" width="80" height="40" fill="#e9b44c"/><rect x="120" y="48" width="80" height="40" fill="#e9b44c"/>
+ <rect x="0" y="88" width="200" height="12" fill="#4f8bd6"/>
+ <rect x="0" y="100" width="200" height="70" fill="#27323f"/>
+ <rect x="0" y="170" width="200" height="100" fill="#c9d6e4"/>
+ <rect x="0" y="270" width="200" height="20" fill="#8fa0b3"/>
+ <text class="t2" x="100" y="312" text-anchor="middle">PR 패턴 형성</text>
+ <text class="t3" x="100" y="330" text-anchor="middle">PR 두께 ~100 nm급</text>
+</g>
+<!-- panel 2 -->
+<g transform="translate(240,0)">
+ <text class="t1" x="100" y="30" text-anchor="middle">② SiON Open</text>
+ <rect x="0" y="62" width="80" height="26" fill="#e9b44c"/><rect x="120" y="62" width="80" height="26" fill="#e9b44c"/>
+ <rect x="0" y="88" width="80" height="12" fill="#4f8bd6"/><rect x="120" y="88" width="80" height="12" fill="#4f8bd6"/>
+ <rect x="0" y="100" width="200" height="70" fill="#27323f"/>
+ <rect x="0" y="170" width="200" height="100" fill="#c9d6e4"/>
+ <rect x="0" y="270" width="200" height="20" fill="#8fa0b3"/>
+ <text class="t2" x="100" y="312" text-anchor="middle">CF₄ / CHF₃ 계 (F 기반)</text>
+ <text class="t3" x="100" y="330" text-anchor="middle">PR 일부 소모</text>
+</g>
+<!-- panel 3 -->
+<g transform="translate(460,0)">
+ <text class="t1" x="100" y="30" text-anchor="middle">③ ACL Open</text>
+ <rect x="0" y="88" width="80" height="12" fill="#4f8bd6"/><rect x="120" y="88" width="80" height="12" fill="#4f8bd6"/>
+ <rect x="0" y="100" width="80" height="70" fill="#27323f"/><rect x="120" y="100" width="80" height="70" fill="#27323f"/>
+ <rect x="0" y="170" width="200" height="100" fill="#c9d6e4"/>
+ <rect x="0" y="270" width="200" height="20" fill="#8fa0b3"/>
+ <text class="t2" x="100" y="312" text-anchor="middle">O₂ 계 (+COS · N₂ 등)</text>
+ <text class="t3" x="100" y="330" text-anchor="middle">PR 전부 소모 · SiON은 유지</text>
+</g>
+<!-- panel 4 -->
+<g transform="translate(680,0)">
+ <text class="t1" x="100" y="30" text-anchor="middle">④ Target 식각</text>
+ <polygon points="0,124 68,124 80,138 80,170 0,170" fill="#27323f"/>
+ <polygon points="200,124 132,124 120,138 120,170 200,170" fill="#27323f"/>
+ <rect x="0" y="170" width="80" height="100" fill="#c9d6e4"/><rect x="120" y="170" width="80" height="100" fill="#c9d6e4"/>
+ <rect x="0" y="270" width="200" height="20" fill="#8fa0b3"/>
+ <text class="t2" x="100" y="312" text-anchor="middle">C₄F₆ / C₄F₈ / O₂ / Ar 계</text>
+ <text class="t3" x="100" y="330" text-anchor="middle">SiON 소모 → ACL 서서히 소모</text>
+</g>
+<!-- legend -->
+<g transform="translate(150,350)">
+ <rect x="0" y="0" width="13" height="13" fill="#e9b44c"/><text class="lg" x="19" y="11">PR</text>
+ <rect x="70" y="0" width="13" height="13" fill="#4f8bd6"/><text class="lg" x="89" y="11">SiON (DARC)</text>
+ <rect x="205" y="0" width="13" height="13" fill="#27323f"/><text class="lg" x="224" y="11">ACL</text>
+ <rect x="285" y="0" width="13" height="13" fill="#c9d6e4"/><text class="lg" x="304" y="11">Target (SiO₂ · SiN 등)</text>
+ <rect x="470" y="0" width="13" height="13" fill="#8fa0b3"/><text class="lg" x="489" y="11">하부막</text>
+</g>
+</svg>
