@@ -70,7 +70,7 @@ window.addEventListener('resize',()=>{if(!tip.hidden&&cur)place(cur)});
 
 /* ---------- 2. 다음 장 자동 넘김 ---------- */
 const hint=document.createElement('div');hint.className='next-hint';hint.hidden=true;
-hint.innerHTML='<button type="button"><span class="nh-label"></span><span class="nh-title"></span><span class="nh-how"></span><span class="nh-bar"><i></i></span></button>';
+hint.innerHTML='<button type="button"><span class="nh-label"></span><span class="nh-title"></span><span class="nh-bar"><i></i></span></button>';
 pane.insertAdjacentElement('afterend',hint);
 const bar=hint.querySelector('.nh-bar i');
 const NEED=260;
@@ -83,14 +83,12 @@ function setBar(){bar.style.width=Math.min(100,acc/NEED*100)+'%'}
 function reset(){acc=0;armed=false;setBar()}
 function updateHint(){
  const list=chapterButtons(),id=currentId(),i=list.findIndex(b=>b.dataset.ch===id),nb=i>=0?list[i+1]:null;
- const lab=hint.querySelector('.nh-label'),tit=hint.querySelector('.nh-title'),how=hint.querySelector('.nh-how');
- nextId=nb?nb.dataset.ch:null;hint.hidden=false;reset();
- if(!nb){hint.classList.add('end');lab.textContent='마지막 장';tit.textContent='여기가 교과서의 끝이다.';how.textContent='';bar.parentNode.hidden=true;return}
- hint.classList.remove('end');bar.parentNode.hidden=false;
+ const lab=hint.querySelector('.nh-label'),tit=hint.querySelector('.nh-title');
+ nextId=nb?nb.dataset.ch:null;hint.hidden=!nb;reset();
+ if(!nb)return;
  const newPart=nextId.slice(0,2)!==id.slice(0,2),name=nb.querySelector('strong')?.textContent.trim()||nextId;
  lab.textContent=newPart?`다음 Part · ${partName(nextId)}`:`다음 장 · ${nextId}`;
  tit.textContent=newPart?`${nextId} · ${name}`:name;
- how.textContent='여기서 계속 내리거나 누르면 넘어간다.';
 }
 function go(){
  if(!nextId||going)return;going=true;reset();

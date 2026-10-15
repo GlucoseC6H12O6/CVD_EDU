@@ -145,8 +145,8 @@ def build():
     # Part 03 머리표를 다른 Part와 같은 형식으로 (원래는 판 번호가 붙어 있었다)
     raw = re.sub(r'<p class="part03-label">[^<]*</p>(<h1 class="chapter-heading" id="s-(03-\d\d)")',
                  r'<div class="headlines">PART 03 · CHAPTER \2</div>\n\1', raw)
-    raw = raw.replace('근거 번호 <code>S##</code>는 이 Chapter 끝의 ‘자료 수집 기록’ 표의 ID다.',
-                      '근거 번호 <code>S##</code>는 이 장 끝 ‘출처와 확인 수준’ 표의 번호다. 표시에 마우스를 올리면 그 출처가 뜬다.')
+    raw = raw.replace('근거 번호 <code>S##</code>는 이 Chapter 끝의 ‘자료 수집 기록’ 표의 ID다. 논문은 초록·요약 수준까지만 확인했다.',
+                      '근거 번호 <code>S##</code>는 이 장 끝 ‘출처와 확인 수준’ 표의 번호다.')
     raw = re.sub(r'<summary>자료 수집 기록 · 출처 (\d+)건과 확인 수준</summary>', r'<summary>출처와 확인 수준 · \1건</summary>', raw)
     figs = figure_overrides()
     maths = math_overrides()
@@ -290,6 +290,7 @@ def reader_srcs(md):
     md = re.sub(r'\s*\(20\d\d-\d\d-\d\d[^)]*\)', '', md)
     md = re.sub(r'20\d\d-\d\d-\d\d:\s*', '', md)
     md = md.replace('기존 HTML(v0.9.1)', '이전 판').replace('기존 HTML', '이전 판')
+    md = re.sub(r'(\d\d-\d\d) 자료수집 (S\d\d)', r'\1의 \2', md)
     return md
 
 
