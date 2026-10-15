@@ -2,7 +2,7 @@
 
 반도체 CVD 공정을 처음 맡는 엔지니어를 위한 한국어 교과서다. HTML 한 파일로 되어 있어 내려받아 브라우저로 열면 오프라인에서도 읽을 수 있다.
 
-**읽기:** [`CVD_EDU_v1.2_Textbook.html`](CVD_EDU_v1.2_Textbook.html)을 내려받아 브라우저로 연다.
+**읽기:** [`CVD_EDU_v1.2_Textbook.html`](CVD_EDU_v1.2_Textbook.html)을 내려받아 브라우저로 연다. 왼쪽 목차에서 장을 고르고, 장 끝에서 한 번 더 내리면 다음 장으로 넘어간다. 본문의 근거 표시에 마우스를 올리면(터치 화면에서는 누르면) 그 문헌이 뜬다.
 
 ## 구성
 
@@ -18,6 +18,7 @@
 | 07 | 문제 해결·제어: 문제 해결 절차, Chamber Matching, SPC, DOE, 고장 진단, Qualification, APC | 7 |
 | 08 | 모델링: 기본 모델, 반응·수송, CFD, Feature-scale, 통계·인과, 최적화, 데이터 기반 공정 | 7 |
 | 09 | 사례: ACL 오염, BPSG 형상 이상, USG 불균일, SiCN 조성·응력, SiB Hardmask, 다중 Chamber Matching | 6 |
+| 10 | 소자: 소자 지도(Logic·DRAM·NAND와 CVD 막의 자리), Logic Transistor(HKMG·FinFET·Nanosheet), Logic 배선(W Plug·Cu Damascene·Low-k), DRAM(1T1C·묻힌 Word Line·Capacitor), NAND Flash(3D NAND 적층·Word Line 교체) | 5 |
 
 ## 그림의 출처와 라이선스
 
@@ -39,22 +40,24 @@ python3 prep_figures.py    # 그림 원본을 자르고 회전해 film_content/f
 python3 apply_textbook.py  # CVD_EDU_v1.2_Textbook.html을 만든다
 ```
 
-`apply_textbook.py`는 89개 장의 절 id, 사이드바 목차, 보존 블록, 태그 짝, 장 사이 연결을 검사하고, 하나라도 어긋나면 파일을 쓰지 않는다.
+`apply_textbook.py`는 94개 장의 절 id, 사이드바 목차, 보존 블록, 태그 짝, 장 사이 연결을 검사하고, 하나라도 어긋나면 파일을 쓰지 않는다.
 
 ## 원고 위치
 
 | 대상 | 원고 |
 |---|---|
 | Part 00–02, 04–09 (70개 장) | `textbook/NN-NN.md`, 그림·수식·위젯 보존 블록은 `textbook/_keep/NN-NN.json` |
+| Part 10 (5개 장) | `textbook/10-NN.md` (보존 블록 없음, 빌드가 새 장으로 더한다) |
 | 70개 장의 교체 그림 | `textbook/_figures.md` |
 | Part 03 (19개 막질) | `film_content/03-NN_*_본문.md`, 자료 수집 기록은 `*_자료수집.md` |
 | 그림 | `film_content/figures/` (원본은 `_staging/`, 자르기·복사는 `prep_figures.py`) |
+| 읽기 도구 | `textbook_ui.js`, `textbook_ui.css` (근거 호버, 다음 장 자동 넘김) |
 
 원고 문법과 버전별 변경 내용은 [`README_v1.2.md`](README_v1.2.md)에 있다. `CVD_EDU_v1.0_Critical_Concepts.html`은 빌드 입력이라 고치지 않는다.
 
 ## 근거 표시
 
-본문 주장 뒤의 표시는 근거의 종류를 뜻한다. **[논문]** 논문에 보고된 값, **[특허]** 특허의 주장·실시예, **[리뷰]** 교과서 수준의 정설, **[계산]** 가정을 밝힌 교육용 계산, **[현장]** 문헌으로 못 박지 못한 현장 통념이다. 번호는 장 끝 참고 목록의 번호이며, 목록마다 서지만 확인했는지 내용까지 확인했는지 적었다.
+본문 주장 뒤의 표시는 근거의 종류를 뜻한다. **[논문]** 논문에 보고된 값, **[특허]** 특허의 주장·실시예, **[리뷰]** 교과서 수준의 정설, **[계산]** 가정을 밝힌 교육용 계산, **[현장]** 문헌으로 못 박지 못한 현장 통념이다. 번호는 장 끝 참고 목록의 번호이며, 목록마다 서지만 확인했는지 내용까지 확인했는지 적었다. 표시에 마우스를 올리면 그 항목이 카드로 뜬다.
 
 ## 한계
 

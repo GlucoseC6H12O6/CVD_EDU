@@ -1,8 +1,10 @@
-"""v1.2 — 89개 Chapter 전체를 교과서 원고로 만든다.
+"""v1.2 — 원래 89개 Chapter와 새로 더한 Chapter(Part 10)를 교과서 원고로 만든다.
 
 입력  CVD_EDU_v1.0_Critical_Concepts.html        (수정하지 않는다)
       film_content/03-NN_*_본문.md, *_자료수집.md   Part 03의 19개 Chapter
       textbook/NN-NN.md, textbook/_keep/NN-NN.json  나머지 70개 Chapter (extract_textbook.py로 꺼낸 원고)
+      textbook/10-NN.md (_keep 없음)               원래 HTML에 없던 새 Chapter (add_chapter)
+      textbook_ui.css, textbook_ui.js              읽기 도구(근거 호버, 다음 장 자동 넘김)
 출력  CVD_EDU_v1.2_Textbook.html
 
 textbook 원고 문법은 film_content와 같다. 추가로
@@ -136,15 +138,24 @@ def build():
     # 원래 HTML의 Part 03 첫머리 자체 제작 개념도(슬라이더 포함)는 넣지 않는다 (2026-10-15 사용자 요청).
     # 그 자리의 실제 그림은 film_content 원고 본문에 있다.
     A.DROP_CRIT = {'03-%02d' % k for k in range(1, 20)}
+    A.SRC_FILTER = reader_srcs
     A.build()                      # Part 03 (film_content) → OUT
     A.verify()
     raw = OUT.read_text(encoding='utf-8')
-    raw = raw.replace('/  v1.2 원고 반영', '/  v1.2 교과서 원고')
+    # Part 03 머리표를 다른 Part와 같은 형식으로 (원래는 판 번호가 붙어 있었다)
+    raw = re.sub(r'<p class="part03-label">[^<]*</p>(<h1 class="chapter-heading" id="s-(03-\d\d)")',
+                 r'<div class="headlines">PART 03 · CHAPTER \2</div>\n\1', raw)
+    raw = raw.replace('근거 번호 <code>S##</code>는 이 Chapter 끝의 ‘자료 수집 기록’ 표의 ID다.',
+                      '근거 번호 <code>S##</code>는 이 장 끝 ‘출처와 확인 수준’ 표의 번호다. 표시에 마우스를 올리면 그 출처가 뜬다.')
+    raw = re.sub(r'<summary>자료 수집 기록 · 출처 (\d+)건과 확인 수준</summary>', r'<summary>출처와 확인 수준 · \1건</summary>', raw)
     figs = figure_overrides()
     maths = math_overrides()
-    done = []
+    done, added = [], []
     for f in sorted(TB.glob('[0-9][0-9]-[0-9][0-9].md')):
         cid = f.stem
+        if not (TB / '_keep' / (cid + '.json')).exists():
+            added.append(f)        # 원래 HTML에 없는 새 Chapter(Part 10 등)
+            continue
         store = json.loads((TB / '_keep' / (cid + '.json')).read_text(encoding='utf-8'))
         # 원본(v1.0) 각주에 Markdown 굵게 표시가 그대로 남은 곳을 고친다
         store['keep'] = [re.sub(r'(<p class="gas-footnote">[^<]*?)\*\*([^*<]+)\*\*', r'\1<strong>\2</strong>', k) for k in store['keep']]
@@ -164,15 +175,99 @@ def build():
         tpl = re.search(r'(<template id="tpl-%s">)(.*?)(</template>)' % cid, raw, flags=re.S)
         old = tpl.group(2)
         body = render(md, cid, store)
-        new = '%s\n<div class="fc tb">\n%s\n<p class="rev">%s · v1.2 교과서 원고는 textbook/%s.md에서 생성했다.</p>\n</div>' % ('\n'.join(store['head']), body, cid, cid)
+        new = '%s\n<div class="fc tb">\n%s\n</div>' % ('\n'.join(store['head']), body)
         check(cid, old, new, render(md, cid, dict(store, keep=[''] * len(store['keep']))), dropped_ids)
         raw = raw[:tpl.start(2)] + new + raw[tpl.end(2):]
-        raw, c = re.subn(r'(<button[^>]*data-ch="%s"[^>]*>.*?<small>)[^<]*(</small>)' % cid, r'\g<1>개정\g<2>', raw, count=1, flags=re.S)
         done.append((cid, len(body)))
-    # 탭 제목: 원래 HTML은 Part 03만 다루던 시절의 제목을 그대로 쓰고 있었다
-    raw = re.sub(r'<title>[^<]*</title>', '<title>CVD Engineering Knowledge — CVD 엔지니어 교과서 v1.2</title>', raw, count=1)
+    for f in added:
+        raw = add_chapter(raw, f)
+        done.append((f.stem, 0))
+    raw = reader_chrome(raw)
     OUT.write_text(raw, encoding='utf-8')
     return done
+
+
+# 원래 HTML에 없는 Part의 사이드바 제목
+NEW_PARTS = {'10': 'Device Integration — Logic · DRAM · NAND'}
+
+
+def add_chapter(raw, f):
+    """textbook/NN-NN.md 중 원래 HTML에 template이 없는 Chapter를 새로 넣는다.
+    첫 줄 '# NN-NN · English Name — 한국어 부제'에서 제목을, '## N. 제목'에서 절을 읽는다."""
+    cid, md = f.stem, f.read_text(encoding='utf-8')
+    assert '<template id="tpl-%s">' % cid not in raw, (cid, '이미 있는 Chapter')
+    title = re.match(r'^# \d\d-\d\d · (.+)$', md.split('\n', 1)[0]).group(1).strip()
+    name = title.split(' — ')[0].strip()
+    plans = re.findall(r'^## \d+\.\s+(.+)$', md, flags=re.M)
+    body = render(md, cid, {'keep': [], 'h2': []})
+    for tag in ('div', 'details', 'figure', 'table', 'ul', 'ol'):
+        assert body.count('<' + tag) == body.count('</%s>' % tag), (cid, tag, '태그 짝')
+    assert '그림 누락' not in body, (cid, '그림 파일 없음')
+    text = re.sub(r'<(svg|math|script|style)\b.*?</\1>', '', body, flags=re.S)
+    text = re.sub(r'<[^>]+>', ' ', text)
+    for bad in ('{{keep', '{h2:', '](#', '**', '$'):
+        assert bad not in text, (cid, '변환 안 된 표기', bad)
+    part = cid[:2]
+    tpl = ('<template id="tpl-%s"><div class="headlines">PART %s · CHAPTER %s</div>\n'
+           '<h1 class="chapter-heading" id="s-%s">%s</h1>\n<div class="fc tb">\n%s\n</div></template>'
+           % (cid, part, cid, cid, html.escape(title, quote=False), body))
+    i = raw.rindex('</template>') + len('</template>')
+    raw = raw[:i] + '\n' + tpl + raw[i:]
+    btn = ('<button aria-current="false" class="chapter-link" data-ch="%s" type="button"><span class="chapter-id">%s</span>'
+           '<strong>%s</strong></button>' % (cid, cid[3:], html.escape(name, quote=False)))
+    if 'data-part="%s"' % part in raw:
+        m = re.search(r'(<details class="part-disclosure" data-part="%s">.*?)(</div></details>)' % part, raw, flags=re.S)
+        raw = raw[:m.end(1)] + btn + raw[m.end(1):]
+    else:
+        det = ('<details class="part-disclosure" data-part="%s"><summary>PART %s · %s</summary><div class="chapter-nav-items">%s</div></details>'
+               % (part, part, html.escape(NEW_PARTS[part], quote=False), btn))
+        i = raw.index('</div></aside>')
+        raw = raw[:i] + det + raw[i:]
+    for var, val in (('chapters', {'name': name, 'ready': True}), ('allNames', name), ('chapterPlans', plans)):
+        m = re.search(r'const %s=(\{.*?\});' % var, raw)
+        obj = json.loads(m.group(1)); obj[cid] = val
+        raw = raw[:m.start(1)] + json.dumps(obj, ensure_ascii=False) + raw[m.end(1):]
+    return raw
+
+
+def reader_chrome(raw):
+    """독자에게 쓸모없는 제작 정보(판 번호, 원고 파일 이름, '1차 집필본', 장마다 붙은 초안·개정 표시)를 빼고
+    읽기 도구(textbook_ui.css/js: 근거 호버, 다음 장 자동 넘김)를 넣는다 (2026-10-16 사용자 요청)."""
+    raw = re.sub(r'\n?<p class="rev">[^<]*</p>', '', raw)
+    raw = re.sub(r'<div class="kicker">[^<]*</div>', '', raw, count=1)
+    raw = re.sub(r'<span class="topright">[^<]*</span>', '', raw, count=1)
+    raw = re.sub(r'(<button[^>]*class="chapter-link"[^>]*>.*?)<small>[^<]*</small>', r'\1', raw, flags=re.S)
+    raw = re.sub(r'<meta content="[^"]*" name="cvdedu-revision"/>', '', raw)
+    # 탭 제목: 원래 HTML은 Part 03만 다루던 시절의 제목을 그대로 쓰고 있었다
+    raw = re.sub(r'<title>[^<]*</title>', '<title>CVD Engineering Knowledge — CVD 엔지니어 교과서</title>', raw, count=1)
+    css = (HERE / 'textbook_ui.css').read_text(encoding='utf-8')
+    js = (HERE / 'textbook_ui.js').read_text(encoding='utf-8')
+    raw = raw.replace('</head>', '<style id="textbook-ui">\n%s</style></head>' % css, 1)
+    i = raw.rindex('</body>')
+    raw = raw[:i] + '<script id="textbook-ui-js">\n%s</script>\n' % js + raw[i:]
+    return raw
+
+
+def reader_srcs(md):
+    """Part 03 자료수집.md를 장 끝 '출처와 확인 수준'으로 보일 때 작업 일지 문구를 뺀다.
+    원본 md(연구 기록)는 그대로 두고 HTML에만 적용한다."""
+    keep = []
+    for sec in re.split(r'(?m)^(?=## )', md):
+        head = sec.split('\n', 1)[0]
+        has_rows = re.search(r'(?m)^\|\s*S\d\d\s*\|', sec)
+        if not has_rows and re.search(r'재검색 기록|사진 후보 검토|기존 본문\(v0\.9', head):
+            continue
+        keep.append(sec)
+    md = ''.join(keep)
+    md = re.sub(r'(?m)^수집일:.*\n', '', md)
+    md = re.sub(r'(?m)^(- |\d+\. )?(사용자 요청으로|기존 사용자 BPSG|사용자 보유 BPSG).*\n', '', md)
+    md = md.replace('본문 첫머리에 있던 자체 제작 개념도는 빌드에서 뺐다. ', '')
+    md = re.sub(r'(?m)^## SEM·TEM 사진 추가.*$', '## 본문에 넣은 전자현미경 사진', md)
+    md = re.sub(r'(?m)^## (\d+\. )?2026-\d\d-\d\d 보강 기록', r'## \1보강 자료', md)
+    md = re.sub(r'\s*\(20\d\d-\d\d-\d\d[^)]*\)', '', md)
+    md = re.sub(r'20\d\d-\d\d-\d\d:\s*', '', md)
+    md = md.replace('기존 HTML(v0.9.1)', '이전 판').replace('기존 HTML', '이전 판')
+    return md
 
 
 def figure_overrides():
@@ -220,8 +315,12 @@ def check(cid, old, new, body_only, dropped_ids=frozenset()):
 
 def verify():
     t = OUT.read_text(encoding='utf-8')
-    assert len(re.findall(r'<template id="tpl-', t)) == 89
+    n_md = len(list(TB.glob('[0-9][0-9]-[0-9][0-9].md'))) + 19
+    assert len(re.findall(r'<template id="tpl-', t)) == n_md, ('template 수', n_md)
     ids = set(re.findall(r'<template id="tpl-(\d\d-\d\d)"', t))
+    assert ids == set(re.findall(r'<button[^>]*class="chapter-link" data-ch="(\d\d-\d\d)"', t)), '사이드바와 template 불일치'
+    for meta in ('first draft', '1차 집필본', '생성했다.</p>', 'class="rev"'):
+        assert meta not in t, ('제작 정보 문구가 남음', meta)
     bad = sorted(set(re.findall(r'data-ref="([^"]+)"', t)) - ids)
     assert not bad, ('없는 Chapter를 가리키는 연결', bad)
     assert 'class="critical-figure"' not in t and 'id="acl-h"' not in t and 'id="reflow-top"' not in t
@@ -233,6 +332,6 @@ def verify():
 if __name__ == '__main__':
     rows = build()
     verify()
-    print('textbook Chapter %d개 반영' % len(rows))
-    print('PASS: 89 templates, Part 03 검증 + 70개 Chapter의 id·절 구성·보존 블록·태그 짝·Chapter 연결 확인')
+    print('textbook Chapter %d개 반영 (새 Chapter %d개)' % (len(rows), sum(1 for r in rows if r[1] == 0)))
+    print('PASS: %d templates, Part 03 검증 + textbook Chapter의 id·절 구성·보존 블록·태그 짝·Chapter 연결 확인' % (len(rows) + 19))
     print('wrote', OUT.name, OUT.stat().st_size, 'bytes')

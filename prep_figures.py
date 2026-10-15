@@ -169,6 +169,13 @@ JOBS = [
  ('us5862057_p7.png', '04-05_us5862057_fig4.png', (0, 0.10, 1, 0.88)),
  ('us5862057_p8.png', '04-05_us5862057_fig5.png', (0, 0.10, 1, 0.88)),
  ('us7638161_p8.png', '04-07_us7638161_fig6-7.png', HDR),
+ # 2026-10-16: Part 10 소자 (Logic · DRAM · NAND)
+ ('us7852675_p10.png', '10-01_us7852675_fig9.png', HDR, 90),
+ ('us6413802_p3.png', '10-02_us6413802_fig1.png', (0, 0.09, 1, 0.39), 0),
+ ('us6518171_p2.png', '10-03_us6518171_fig1.png', HDR, 90),
+ ('us3387286_p1.png', '10-04_us3387286_fig1.png', (0, 0.16, 1, 0.52), 0),
+ ('us12058850_p4.png', '10-04_us12058850_fig2.png', HDR, 0),
+ ('us7852675_p6.png', '10-05_us7852675_fig5.png', HDR, 0),
 ]
 SPLITS = [
  ('03-02_us11145522_fig2-3.png', (0.35, 0.65), '03-02_us11145522_fig2.png', '03-02_us11145522_fig3.png'),
@@ -234,6 +241,13 @@ COPY = [
  ('yangoes2014_f2.jpg', '08-05_yangoes2014_fig2.jpg'), ('yangoes2014_f6.jpg', '08-05_yangoes2014_fig6.jpg'),
  # 2026-10-16: 03-18 Mo 비저항 크기 효과
  ('jog2023_f3.jpg', '03-18_jog2023_fig3.jpg'),
+ # 2026-10-16: Part 10 소자 (Logic · DRAM · NAND)
+ ('zhang2024nsr_f1.jpg', '10-02_zhang2024_fig1.jpg'), ('chu2023gaa_f2.jpg', '10-02_chu2023_fig2.jpg'), ('chu2023gaa_f5.jpg', '10-02_chu2023_fig5.jpg'),
+ ('cui2019via_f2.jpg', '10-03_cui2019_fig2.jpg'), ('cui2019via_f3.jpg', '10-03_cui2019_fig3.jpg'),
+ ('zhao2022ic_f5.jpg', '10-03_zhao2022_fig5.jpg'),
+ ('sun2022bcat_f1.jpg', '10-04_sun2022_fig1.jpg'), ('kim2025hfo_f2.jpg', '10-04_kim2025_fig2.jpg'),
+ ('lee2022nand_f1.jpg', '10-05_lee2022_fig1.jpg'), ('lee2022nand_f2.jpg', '10-05_lee2022_fig2.jpg'),
+ ('jia2023deck_f2.jpg', '10-05_jia2023_fig2.jpg'), ('ramesh2021mg_f9.jpg', '10-05_ramesh2021_fig9.jpg'),
 ]
 if __name__ == '__main__':
     for j in JOBS: make(*j)

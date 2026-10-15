@@ -19,6 +19,7 @@ OUT = HERE / 'CVD_EDU_v1.1_Film_Content.html'
 CONTENT = HERE / 'film_content'
 VERSION = 'v1.1'
 DROP_CRIT = set()   # 원래 HTML의 critical figure를 넣지 않을 Chapter (예: {'03-01'})
+SRC_FILTER = None   # 자료수집.md 본문을 HTML로 바꾸기 전에 거르는 함수 (v1.2: 작업 일지 문구 제거)
 
 EV_WORDS = ('논문', '특허', '리뷰', '계산', '현장', '발표', '학회', '기사', '웹', '보고', '통설', '교과서',
             '학위', '기술', '응용', '데이터', '포럼', '소식지', '교육')
@@ -224,7 +225,8 @@ def build():
         body = render(body_md[0].read_text(encoding='utf-8'), cid, 'body')
         assert '<!--CRITICAL-FIGURE-->' in body, cid
         body = body.replace('<!--CRITICAL-FIGURE-->', '' if cid in DROP_CRIT else crit, 1)
-        srcs = render(src_md[0].read_text(encoding='utf-8'), cid, 'src')
+        src_text = src_md[0].read_text(encoding='utf-8')
+        srcs = render(SRC_FILTER(src_text) if SRC_FILTER else src_text, cid, 'src')
         n_src = len(re.findall(r'^\|\s*S\d\d\s*\|', src_md[0].read_text(encoding='utf-8'), flags=re.M))
         new = ('<p class="part03-label">PART 03 · FILM ENGINEERING  /  %s 원고 반영</p>%s\n<div class="fc">\n%s\n'
                '<details class="srcs"><summary>자료 수집 기록 · 출처 %d건과 확인 수준</summary>\n%s\n</details>\n'
