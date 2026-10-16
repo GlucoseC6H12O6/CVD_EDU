@@ -147,7 +147,10 @@ def build():
                  r'<div class="headlines">PART 03 · CHAPTER \2</div>\n\1', raw)
     raw = raw.replace('근거 번호 <code>S##</code>는 이 Chapter 끝의 ‘자료 수집 기록’ 표의 ID다. 논문은 초록·요약 수준까지만 확인했다.',
                       '근거 번호 <code>S##</code>는 이 장 끝 ‘출처와 확인 수준’ 표의 번호다.')
-    raw = re.sub(r'<summary>자료 수집 기록 · 출처 (\d+)건과 확인 수준</summary>', r'<summary>출처와 확인 수준 · \1건</summary>', raw)
+    # 건수는 화면에 남은 출처(서로 다른 S##) 수로 다시 센다
+    raw = re.sub(r'<summary>자료 수집 기록 · 출처 \d+건과 확인 수준</summary>(.*?)</details>',
+                 lambda m: '<summary>출처와 확인 수준 · %d건</summary>%s</details>'
+                 % (len(set(re.findall(r'<tr><td>(S\d\d)</td>', m.group(1)))), m.group(1)), raw, flags=re.S)
     figs = figure_overrides()
     maths = math_overrides()
     texts = text_overrides()
@@ -207,6 +210,7 @@ def add_chapter(raw, f):
     name = title.split(' — ')[0].strip()
     plans = re.findall(r'^## \d+\.\s+(.+)$', md, flags=re.M)
     body = render(md, cid, {'keep': [], 'h2': []})
+    assert not BAD_NESTED_REF.search(body), (cid, '근거 표시 뒤 내부 링크 앞에 공백 필요')
     for tag in ('div', 'details', 'figure', 'table', 'ul', 'ol'):
         assert body.count('<' + tag) == body.count('</%s>' % tag), (cid, tag, '태그 짝')
     assert '그림 누락' not in body, (cid, '그림 파일 없음')
@@ -252,12 +256,43 @@ def chapter_titles(raw):
 
 def reader_chrome(raw):
     """독자에게 쓸모없는 제작 정보(판 번호, 원고 파일 이름, '1차 집필본', 장마다 붙은 초안·개정 표시)를 빼고
-    읽기 도구(textbook_ui.css/js: 근거 호버, 다음 장 자동 넘김)를 넣는다 (2026-10-16 사용자 요청)."""
+    읽기 도구(textbook_ui.css/js: 검색, 근거 호버, 다음 장 자동 넘김)를 넣는다."""
     raw = re.sub(r'\n?<p class="rev">[^<]*</p>', '', raw)
     raw = re.sub(r'<div class="kicker">[^<]*</div>', '', raw, count=1)
-    raw = re.sub(r'<span class="topright">[^<]*</span>', '', raw, count=1)
-    raw = re.sub(r'(<button[^>]*class="chapter-link"[^>]*>.*?)<small>[^<]*</small>', r'\1', raw, flags=re.S)
+    # 장 버튼 안의 보조 문구만 제거한다. 닫는 button을 넘어가면 뒤에 넣는 전역 안내의 small까지 삼킬 수 있다.
+    raw = re.sub(r'(<button[^>]*class="chapter-link"[^>]*>(?:(?!</button>).)*?)<small>[^<]*</small>',
+                 r'\1', raw, flags=re.S)
+    tools = '''<div class="reader-tools">
+<div class="chapter-search"><label class="sr-only" for="chapterSearch">교재 검색</label><input autocomplete="off" id="chapterSearch" placeholder="교재 검색" spellcheck="false" type="search"/><div class="search-results" hidden="" id="searchResults" role="listbox"></div></div>
+<details class="evidence-guide"><summary>근거 표시</summary><div class="evidence-panel"><b>근거 표시</b><p><span class="legend-tag p">논문</span> 논문·학회 발표·연구 보고서에 보고된 값</p><p><span class="legend-tag t">특허</span> 특허의 주장·실시예</p><p><span class="legend-tag r">리뷰</span> 리뷰·교과서·해설 자료에 정리된 정설</p><p><span class="legend-tag c">계산</span> 가정을 밝힌 교육용 계산</p><p><span class="legend-tag field">현장</span> 논문·특허로 확인되지 않은 현장 통념과 업계 보도(자기 장비에서 확인해야 한다)</p><small>번호는 현재 장 끝 참고 목록의 번호이다.</small><small>본문의 관계와 경향은 공정을 이해하기 위한 기초이며, 같은 장비에서 같은 Recipe를 쓰면 언제나 같은 물성과 결함이 나온다는 뜻이 아니다. 직접 관찰한 사실, 문헌의 보고, 교육용 모델, 검증된 인과관계는 서로 구분해서 다루어야 한다.</small></div></details>
+</div>'''
+    raw, n = re.subn(r'<span class="topright">[^<]*</span>', tools, raw, count=1)
+    assert n == 1, '헤더 읽기 도구 삽입 위치'
     raw = re.sub(r'<meta content="[^"]*" name="cvdedu-revision"/>', '', raw)
+    # 보존된 옛 HTML 블록의 외부 링크에도 Markdown에서 만든 링크와 같은 새 탭·보안 속성을 준다.
+    def external_link(m):
+        attrs = m.group(1)
+        if re.search(r'\btarget=', attrs):
+            return m.group(0)
+        return '<a%s target="_blank" rel="noopener noreferrer">' % attrs
+    raw = re.sub(r'<a([^>]*\bhref="https?://[^"]+"[^>]*)>', external_link, raw)
+    # 장마다 반복되던 범례는 헤더의 전역 안내로 옮긴다. 공개 근거가 적다는 장별 경고 문구는 보존한다.
+    def strip_evidence_legend(m):
+        inner = m.group(1)
+        if '근거 표시 —' not in inner:
+            return m.group(0)
+        prefix = inner.split('근거 표시 —', 1)[0].rstrip()
+        return '<p>%s</p>' % prefix if re.sub(r'<[^>]+>', '', prefix).strip() else ''
+    raw = re.sub(r'<p>(.*?)</p>', strip_evidence_legend, raw, flags=re.S)
+    raw = re.sub(r'<div class="note">\s*</div>', '', raw)
+    # 원고는 남겨 두되 명시적인 학습 목표 상자는 잠시 화면에서 숨긴다.
+    raw = re.sub(r'<div class="note">(?=<p>학습 목표:)',
+                 '<div aria-hidden="true" class="note learning-objective">', raw)
+    # 소목차 하이라이트는 h3 단위다. h4까지 현재 위치로 잡으면 일치 항목이 없어져 표시가 꺼진다.
+    old_here = '''function hereLabel(){const sections=[...pane.querySelectorAll('[id^="s-"]')];const pivot=sections.filter(el=>el.getBoundingClientRect().top<=145).pop();return pivot?pivot.id.slice(2):chapter}'''
+    new_here = '''function hereLabel(){const sections=[...pane.querySelectorAll('h3.subsection-heading[id]')];const pivot=sections.filter(el=>el.getBoundingClientRect().top<=145).pop()||sections[0];return pivot?pivot.id.slice(2):chapter}'''
+    assert old_here in raw, '사이드바 현재 소목차 계산 함수'
+    raw = raw.replace(old_here, new_here, 1)
     # 사이드바 머리의 홍보 문구("읽고, 계산하고, 다시 돌아오는 교과서")는 책 이름으로 바꾼다
     raw, n = re.subn(r'(<div class="brand"><b>[^<]*<br/>[^<]*</b>)<p>.*?</p>', r'\1<p>CVD 엔지니어 교과서</p>', raw, count=1)
     assert n == 1, '사이드바 머리 문구'
@@ -291,7 +326,77 @@ def reader_srcs(md):
     md = re.sub(r'20\d\d-\d\d-\d\d:\s*', '', md)
     md = md.replace('기존 HTML(v0.9.1)', '이전 판').replace('기존 HTML', '이전 판')
     md = re.sub(r'(\d\d-\d\d) 자료수집 (S\d\d)', r'\1의 \2', md)
-    return md
+    return reader_src_tables(md)
+
+
+# 장 끝 '출처와 확인 수준'에서 지우는 조사 일지 문구(셀 안)
+SRC_CELL_CUTS = [
+    r'\s*\**이전 판에서 승계\.?\**',
+    r'\s*\**이번 (?:수집|검색)(?:에서|은)[^|]*?(?:않음|못했다|못함|대부분이다)\.?\**',
+    r'[.,]?\s*(?:저자·)?(?:제목|서지)(?:은|는)? 기억 기반(?:, 검색 결과에 저자 표기는 없었음)?',
+    r'[.,]?\s*제목–(?:수치|내용) 대응은 검색 요약에 의존',
+    r'\s*본문 반영 전[^|]*',
+    r'\s*\**이전 판 승계 문헌, 이번에 재확인\**',
+    r'[.,]?\s*\**[^|.*]*확인 필요\**(?:\([^)]*\))?',
+]
+# 본문과 같은 용어 표기
+SRC_TERMS = [('물질 전달', '물질전달'), ('열 전달', '열전달'), ('하부 막', '하부막'), ('공정 창을', 'Process Window를'),
+             ('공정 창', 'Process Window'), ('참고문헌', '참고 문헌'), ('(검색 결과 [', '([')]
+SRC_DROP_COLS = ('본문 사용', '본문 위치')
+
+
+def reader_src_tables(md):
+    """출처 표만 남긴다. 수집 방법·빈 자료·승계 문헌·보강 기록 같은 조사 일지 절과 표 밖 문장,
+    '본문 사용' 열, 본문에서 쓰지 않은 출처 행은 화면에 내지 않는다."""
+    cid = re.match(r'# (\d\d-\d\d)', md).group(1)
+    body = next(A.CONTENT.glob('%s_*_본문.md' % cid)).read_text(encoding='utf-8')
+    cited = set(re.findall(r'S\d\d', body))
+    for a, z in re.findall(r'S(\d\d)\s*[–-]\s*S(\d\d)', body):
+        cited |= {'S%02d' % k for k in range(int(a), int(z) + 1)}
+    out = ['> 확인 수준: **A** 서지와 수치를 초록·요약으로 확인 · **B** 서지만 확인 · **C** 1차 문헌으로 다시 확인하지 않은 항목', '']
+    for sec in re.split(r'(?m)^(?=## )', md)[1:]:
+        head = sec.split('\n', 1)[0]
+        if re.search(r'수집 방법과 한계|아직 비어 있는|이전 판에서 승계', head):
+            continue
+        title = re.sub(r'^## (?:\d+\.\s*)?', '', head).replace(' (기억 기반)', '').strip()
+        title = {'본문에 넣은 원문 그림': '그림 출처', '본문에 넣은 전자현미경 사진': '전자현미경 사진 출처'}.get(title, title)
+        tables, cur = [], []
+        for line in sec.split('\n')[1:] + ['']:
+            if line.strip().startswith('|'):
+                cur.append(line.strip())
+            elif cur:
+                tables.append(cur); cur = []
+        kept = []
+        for rows in tables:
+            head_cells = A.split_row(rows[0])
+            if 'ID' not in head_cells:
+                continue
+            cols = [k for k, h in enumerate(head_cells) if h not in SRC_DROP_COLS]
+            use = head_cells.index('본문 사용') if '본문 사용' in head_cells else None
+            chk = head_cells.index('확인') if '확인' in head_cells else None
+            body_rows = []
+            for r in rows[2:]:
+                cells = A.split_row(r) + [''] * len(head_cells)
+                sid = cells[head_cells.index('ID')]
+                if not re.fullmatch(r'S\d\d', sid):
+                    continue
+                if use is not None and cells[use].startswith('미사용') and sid not in cited:
+                    continue
+                for pat in SRC_CELL_CUTS:
+                    cells = [re.sub(pat, '', c) for c in cells]
+                cells = [re.sub(r'\((?:검색 요약)(?:의 |, )?([^)]*)\)', lambda m: '(%s)' % m.group(1) if m.group(1) else '', c).replace(' ()', '') for c in cells]
+                cells = [c.replace('금속별 값(기억 기반, S01의 표로 기억)', '금속별 대표값(S01의 표 기준)') for c in cells]
+                cells = [re.sub(r'\**(?:어느|각) 문장이 [^|*]*?특정하지 못했다\**', '여러 특허의 내용을 묶은 요약', c) for c in cells]
+                for a, b in SRC_TERMS:
+                    cells = [c.replace(a, b) for c in cells]
+                if chk is not None:
+                    cells[chk] = re.sub(r'^([ABC])\b.*$', r'\1', cells[chk])
+                body_rows.append('| %s |' % ' | '.join(cells[k].strip() for k in cols))
+            if body_rows:
+                kept.append('\n'.join(['| %s |' % ' | '.join(head_cells[k] for k in cols), '|' + '---|' * len(cols)] + body_rows))
+        if kept:
+            out += ['## ' + title, ''] + [t + '\n' for t in kept]
+    return '# %s\n\n' % cid + '\n'.join(out)
 
 
 def figure_overrides():
@@ -329,6 +434,7 @@ def text_overrides():
 
 
 H4ID = re.compile(r'^(s-\d\d-\d\d\.\d\d\.\d\d|anchor-.*)$')
+BAD_NESTED_REF = re.compile(r'href="\[[^"]+\]\(#(?:k?ref):[^"]+\)"')
 
 
 def check(cid, old, new, body_only, dropped_ids=frozenset()):
@@ -345,6 +451,7 @@ def check(cid, old, new, body_only, dropped_ids=frozenset()):
     text = re.sub(r'<[^>]+>', ' ', text)
     for bad in ('{{keep', '{h2:', '](#', '**', '$'):
         assert bad not in text, (cid, '변환 안 된 표기', bad)
+    assert not BAD_NESTED_REF.search(new), (cid, '근거 표시 뒤 내부 링크 앞에 공백 필요')
 
 
 def verify():
@@ -357,6 +464,20 @@ def verify():
         assert meta not in t, ('제작 정보 문구가 남음', meta)
     bad = sorted(set(re.findall(r'data-ref="([^"]+)"', t)) - ids)
     assert not bad, ('없는 Chapter를 가리키는 연결', bad)
+    assert not BAD_NESTED_REF.search(t), '근거 표시와 내부 링크가 잘못 합쳐짐'
+    assert all('근거 표시 —' not in p for p in re.findall(r'<p\b[^>]*>.*?</p>', t, flags=re.S)), '장별 근거 범례가 남음'
+    assert t.count('class="evidence-guide"') == 1, '전역 근거 안내'
+    assert t.count('번호는 현재 장 끝 참고 목록의 번호이다.') == 1, '전역 근거 번호 안내'
+    assert t.count('같은 장비에서 같은 Recipe를 쓰면 언제나') == 1, '적용 범위 안내는 전역 안내에 한 번만'
+    assert t.count('class="note learning-objective"') == 9, '학습 목표 비활성화'
+    assert '학습 목표' not in re.sub(r'<div aria-hidden="true" class="note learning-objective">.*?</div>', '', t, flags=re.S), '숨기지 않은 학습 목표'
+    assert t.count('id="chapterSearch"') == 1 and t.count('id="searchResults"') == 1, '헤더 검색'
+    assert "querySelectorAll('h3.subsection-heading[id]')" in t, '사이드바 소목차 하이라이트'
+    external = re.findall(r'<a\b[^>]*\bhref="https?://[^"]+"[^>]*>', t)
+    assert external and all('target="_blank"' in a and 'rel="noopener noreferrer"' in a for a in external), '외부 링크 새 탭·보안 속성'
+    assert 'P·I·D 항을 차례로 증가시킬 때의 계단 응답 변화' in t, 'PID 계단 응답 그림'
+    assert 'PID Compensation Animated.gif' in t and 'creativecommons.org/publicdomain/zero/1.0/' in t, 'PID 그림 출처·라이선스'
+    assert 'href="https://msds.kosha.or.kr/"' in t and 'MsdsSelectPrint.jsp' not in t, '공식 MSDS 링크'
     assert 'class="critical-figure"' not in t and 'id="acl-h"' not in t and 'id="reflow-top"' not in t
     for (c, k), h in figure_overrides().items():
         tpl = re.search(r'<template id="tpl-%s">(.*?)</template>' % c, t, flags=re.S).group(1)

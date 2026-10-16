@@ -1,15 +1,80 @@
 /* v1.2 읽기 도구. apply_textbook.py가 </body> 앞에 넣는다.
-   1) 근거 표시(논문 3, 특허 S05 …)에 마우스를 올리면 장 끝 참고 목록이나 출처 표의 그 항목을 띄운다. 터치 화면에서는 누르면 뜬다.
-   2) 장 끝에서 한 번 더 내리면 다음 장으로, Part의 마지막 장이면 다음 Part의 첫 장으로 넘어간다. */
+   1) 헤더 검색으로 전체 교재의 Chapter와 본문을 찾는다.
+   2) 근거 표시(논문 3, 특허 S05 …)에 마우스를 올리면 장 끝 참고 목록이나 출처 표의 그 항목을 띄운다. 터치 화면에서는 누르면 뜬다.
+   3) 장 끝에서 한 번 더 내리면 다음 장으로, Part의 마지막 장이면 다음 Part의 첫 장으로 넘어간다. */
 (()=>{
 const pane=document.getElementById('content'),nav=document.getElementById('chapNav');
 if(!pane||!nav)return;
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-/* ---------- 1. 근거 표시 호버 ---------- */
-const LEGEND=[['학위','학위 논문에 보고된 값'],['논문','논문에 보고된 값'],['학회','학회 발표에 보고된 값'],['특허','특허의 주장·실시예'],
- ['리뷰','교과서 수준의 정설'],['교과서','교과서 수준의 정설'],['통설','교과서 수준의 정설'],['계산','가정을 밝힌 교육용 계산'],
- ['현장','문헌으로 못 박지 못한 현장 통념. 자기 장비에서 확인해야 한다']];
+/* ---------- 1. 전체 교재 검색 ---------- */
+const searchInput=document.getElementById('chapterSearch'),searchResults=document.getElementById('searchResults');
+let searchRows=null,searchSelected=-1;
+const clean=s=>(s||'').replace(/\s+/g,' ').trim();
+const fold=s=>clean(s).toLocaleLowerCase('ko-KR');
+function buildSearchRows(){
+ if(searchRows)return searchRows;
+ searchRows=[...document.querySelectorAll('template[id^="tpl-"]')].map(t=>{
+  const root=t.content.cloneNode(true);
+  root.querySelectorAll('script,style,.learning-objective,details.srcs').forEach(el=>el.remove());
+  const id=t.id.slice(4),title=clean(root.querySelector('h1')?.textContent)||id;
+  const sections=clean([...root.querySelectorAll('h2,h3.subsection-heading')].map(h=>h.textContent).join(' · '));
+  const body=clean(root.textContent);
+  return {id,title,sections,body,hay:fold(`${id} ${title} ${sections} ${body}`)};
+ });
+ return searchRows;
+}
+function snippet(row,term){
+ const lower=row.body.toLocaleLowerCase('ko-KR'),at=lower.indexOf(term);
+ if(at<0)return row.sections||row.body.slice(0,110);
+ const start=Math.max(0,at-38),end=Math.min(row.body.length,at+term.length+76);
+ return (start?'…':'')+row.body.slice(start,end)+(end<row.body.length?'…':'');
+}
+function setSearchSelected(i){
+ const buttons=[...searchResults.querySelectorAll('button[data-search-ch]')];
+ if(!buttons.length){searchSelected=-1;return}
+ searchSelected=(i+buttons.length)%buttons.length;
+ buttons.forEach((b,n)=>b.classList.toggle('selected',n===searchSelected));
+ buttons[searchSelected].scrollIntoView({block:'nearest'});
+}
+function closeSearch(){searchResults.hidden=true;searchSelected=-1;searchInput?.removeAttribute('aria-activedescendant')}
+function runSearch(){
+ if(!searchInput||!searchResults)return;
+ const query=fold(searchInput.value),terms=query.split(' ').filter(Boolean);
+ if(!terms.length){closeSearch();return}
+ const rows=buildSearchRows().filter(r=>terms.every(w=>r.hay.includes(w))).map(r=>{
+  let score=0;
+  if(r.id.startsWith(query))score+=100;
+  if(fold(r.title).includes(query))score+=50;
+  if(fold(r.sections).includes(query))score+=20;
+  return {r,score};
+ }).sort((a,b)=>b.score-a.score||a.r.id.localeCompare(b.r.id)).slice(0,12);
+ searchResults.innerHTML=rows.length?rows.map(({r},i)=>`<button data-search-ch="${r.id}" id="searchResult${i}" role="option" type="button"><span class="sr-id">${r.id}</span><strong>${esc(r.title)}</strong><small>${esc(snippet(r,terms[0]))}</small></button>`).join(''):'<p class="search-empty">일치하는 Chapter가 없습니다.</p>';
+ searchResults.hidden=false;searchSelected=-1;
+}
+if(searchInput&&searchResults){
+ searchInput.addEventListener('input',runSearch);
+ searchInput.addEventListener('focus',()=>{if(searchInput.value.trim())runSearch()});
+ searchInput.addEventListener('keydown',e=>{
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(searchResults.hidden)runSearch();setSearchSelected(searchSelected+(e.key==='ArrowDown'?1:-1));return}
+  if(e.key==='Enter'&&searchSelected>=0){e.preventDefault();searchResults.querySelectorAll('button[data-search-ch]')[searchSelected]?.click();return}
+  if(e.key==='Escape'){closeSearch();searchInput.blur()}
+ });
+ searchResults.addEventListener('click',e=>{
+ const b=e.target.closest('button[data-search-ch]');if(!b)return;
+  nav.querySelector(`button.chapter-link[data-ch="${b.dataset.searchCh}"]`)?.click();
+  requestAnimationFrame(updateHint);
+  searchInput.value='';closeSearch();
+ });
+ document.addEventListener('click',e=>{if(!e.target.closest('.chapter-search'))closeSearch()});
+}
+const evidenceGuide=document.querySelector('.evidence-guide');
+document.addEventListener('click',e=>{if(evidenceGuide?.open&&!e.target.closest('.evidence-guide'))evidenceGuide.open=false});
+
+/* ---------- 2. 근거 표시 호버 ---------- */
+const LEGEND=[['논문','논문·학회 발표·연구 보고서에 보고된 값'],['특허','특허의 주장·실시예'],
+ ['리뷰','리뷰·교과서·해설 자료에 정리된 정설'],['계산','가정을 밝힌 교육용 계산'],
+ ['현장','논문·특허로 확인되지 않은 현장 통념과 업계 보도. 자기 장비에서 확인해야 한다']];
 let refs=new Map();
 function keysOf(b){
  let t=b.textContent;const keys=[];
@@ -68,7 +133,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
 window.addEventListener('scroll',()=>{if(tip.hidden||!cur)return;if(pinned)place(cur);else hide()},{passive:true});
 window.addEventListener('resize',()=>{if(!tip.hidden&&cur)place(cur)});
 
-/* ---------- 2. 다음 장 자동 넘김 ---------- */
+/* ---------- 3. 다음 장 자동 넘김 ---------- */
 const hint=document.createElement('div');hint.className='next-hint';hint.hidden=true;
 hint.innerHTML='<button type="button"><span class="nh-label"></span><span class="nh-title"></span><span class="nh-bar"><i></i></span></button>';
 pane.insertAdjacentElement('afterend',hint);
