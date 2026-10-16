@@ -4,7 +4,8 @@
       film_content/03-NN_*_본문.md, *_자료수집.md   Part 03의 19개 Chapter
       textbook/NN-NN.md, textbook/_keep/NN-NN.json  나머지 70개 Chapter (extract_textbook.py로 꺼낸 원고)
       textbook/10-NN.md (_keep 없음)               원래 HTML에 없던 새 Chapter (add_chapter)
-      textbook_ui.css, textbook_ui.js              읽기 도구(근거 호버, 다음 장 자동 넘김)
+      textbook_ui.css, textbook_ui.js              읽기 도구(검색, 근거 호버, 다음 장 자동 넘김, 사이드바 부드러운 스크롤)
+      fonts/*.woff2                                Apple 기기 밖에서 쓰는 본문·수식 글꼴(SIL OFL, HTML 안에 넣는다)
 출력  CVD_EDU_v1.2_Textbook.html
 
 textbook 원고 문법은 film_content와 같다. 추가로
@@ -17,7 +18,7 @@ textbook 원고 문법은 film_content와 같다. 추가로
 표준 라이브러리만 쓴다.  실행: python3 apply_textbook.py
 """
 from pathlib import Path
-import re, json, html
+import re, json, html, base64
 import apply_film_content as A
 import texmath
 
@@ -256,7 +257,7 @@ def chapter_titles(raw):
 
 def reader_chrome(raw):
     """독자에게 쓸모없는 제작 정보(판 번호, 원고 파일 이름, '1차 집필본', 장마다 붙은 초안·개정 표시)를 빼고
-    읽기 도구(textbook_ui.css/js: 검색, 근거 호버, 다음 장 자동 넘김)를 넣는다."""
+    읽기 도구(textbook_ui.css/js: 검색, 근거 호버, 다음 장 자동 넘김, 사이드바 부드러운 스크롤)를 넣는다."""
     raw = re.sub(r'\n?<p class="rev">[^<]*</p>', '', raw)
     raw = re.sub(r'<div class="kicker">[^<]*</div>', '', raw, count=1)
     # 장 버튼 안의 보조 문구만 제거한다. 닫는 button을 넘어가면 뒤에 넣는 전역 안내의 small까지 삼킬 수 있다.
@@ -300,7 +301,16 @@ def reader_chrome(raw):
     raw = re.sub(r'<title>[^<]*</title>', '<title>CVD Engineering Knowledge — CVD 엔지니어 교과서</title>', raw, count=1)
     css = (HERE / 'textbook_ui.css').read_text(encoding='utf-8')
     js = (HERE / 'textbook_ui.js').read_text(encoding='utf-8')
-    raw = raw.replace('</head>', '<style id="textbook-ui">\n%s</style></head>' % css, 1)
+    # 글꼴 파일을 HTML 안에 싣는다. 외부 글꼴 링크가 막힌 환경에서도, 오프라인에서도 같은 글꼴로 보인다.
+    # Apple 기기는 textbook_ui.css의 순서대로 설치된 글꼴이 먼저 잡히고, 거기에 없는 글자(아래 첨자 ᵢ 등)만 이 글꼴로 그린다.
+    def face(family, fname, weight='400'):
+        data = base64.b64encode((HERE / 'fonts' / fname).read_bytes()).decode('ascii')
+        return ("@font-face{font-family:'%s';font-style:normal;font-weight:%s;"
+                "src:url(data:font/woff2;base64,%s) format('woff2')}" % (family, weight, data))
+    faces = (face('Pretendard Variable', 'PretendardVariable.woff2', '45 920')
+             + face('STIX Two Math Web', 'STIXTwoMath-Regular.woff2'))
+    raw = raw.replace('</head>', '<style id="textbook-font">%s</style>\n'
+                      '<style id="textbook-ui">\n%s</style></head>' % (faces, css), 1)
     i = raw.rindex('</body>')
     raw = raw[:i] + '<script id="textbook-ui-js">\n%s</script>\n' % js + raw[i:]
     return raw

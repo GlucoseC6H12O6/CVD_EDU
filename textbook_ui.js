@@ -1,7 +1,8 @@
 /* v1.2 읽기 도구. apply_textbook.py가 </body> 앞에 넣는다.
    1) 헤더 검색으로 전체 교재의 Chapter와 본문을 찾는다.
    2) 근거 표시(논문 3, 특허 S05 …)에 마우스를 올리면 장 끝 참고 목록이나 출처 표의 그 항목을 띄운다. 터치 화면에서는 누르면 뜬다.
-   3) 장 끝에서 한 번 더 내리면 다음 장으로, Part의 마지막 장이면 다음 Part의 첫 장으로 넘어간다. */
+   3) 장 끝에서 한 번 더 내리면 다음 장으로, Part의 마지막 장이면 다음 Part의 첫 장으로 넘어간다.
+   4) 사이드바나 장 첫머리 목차에서 절을 누르면 그 절까지 부드럽게 스크롤한다. */
 (()=>{
 const pane=document.getElementById('content'),nav=document.getElementById('chapNav');
 if(!pane||!nav)return;
@@ -184,6 +185,30 @@ window.addEventListener('keydown',e=>{
 window.addEventListener('touchstart',e=>{ty=(nextId&&!going&&e.touches.length===1&&atBottom())?e.touches[0].clientY:null;acc=0;setBar()},{passive:true});
 window.addEventListener('touchmove',e=>{if(ty===null)return;acc=Math.max(0,(ty-e.touches[0].clientY)*1.6);setBar()},{passive:true});
 window.addEventListener('touchend',()=>{if(ty!==null&&acc>=NEED)go();ty=null;acc=0;setBar()},{passive:true});
+
+/* ---------- 4. 절 위치 이동 애니메이션 ---------- */
+// 원본 스크립트가 절 버튼(data-jump: 사이드바, 장 첫머리 목차)을 누르면 바로 건너뛰고 읽던 위치와 강조를 갱신한다.
+// 그 처리는 그대로 두고, 끝난 뒤 누르기 전 위치로 되돌렸다가 목표까지 부드럽게 스크롤한다.
+// 도착 위치는 절 제목의 scroll-margin-top(상단 바 높이)으로 맞춘다.
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+const topbar=document.querySelector('.topbar');
+function setJumpTop(){
+ const sticky=topbar&&/sticky|fixed/.test(getComputedStyle(topbar).position);
+ document.documentElement.style.setProperty('--jump-top',(sticky?topbar.offsetHeight-1:0)+'px');
+}
+setJumpTop();
+if(topbar&&window.ResizeObserver)new ResizeObserver(setJumpTop).observe(topbar);
+let jumpFrom=null;
+for(const host of [nav,pane]){
+ host.addEventListener('click',e=>{jumpFrom=e.target.closest('button[data-jump]')?window.scrollY:null},true);
+ host.addEventListener('click',e=>{
+  const j=e.target.closest('button[data-jump]'),from=jumpFrom;jumpFrom=null;
+  if(!j||from===null)return;
+  const dest=document.getElementById(j.dataset.jump);if(!dest)return;
+  window.scrollTo(0,from);
+  dest.scrollIntoView({block:'start',behavior:reduceMotion.matches?'auto':'smooth'});
+ });
+}
 
 /* 장이 바뀔 때마다(#content를 통째로 바꾼다) 다시 맞춘다 */
 let pend=0;

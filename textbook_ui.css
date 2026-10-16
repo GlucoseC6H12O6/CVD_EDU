@@ -1,7 +1,25 @@
 /* v1.2 읽기 도구: 검색, 근거 표시, 다음 장 자동 넘김. apply_textbook.py가 </head> 앞에 넣는다 */
 
+/* 글꼴: Apple 기기는 시스템 글꼴(SF Pro, Apple SD Gothic Neo)을 그대로 쓴다.
+   그 밖의 기기는 같은 모양으로 만든 Pretendard를 쓴다. 글꼴 파일은 apply_textbook.py가 HTML 안에 넣는다. */
+:root{--sans:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard Variable','Malgun Gothic',sans-serif}
+/* 수식도 Mac에 설치된 STIX Two Math를 먼저 쓰고, 없는 기기는 HTML에 넣은 같은 글꼴(STIX Two Math Web)을 쓴다 */
+math,.fc math,.math-figure math{font-family:"STIX Two Math","STIX Two Math Web","Cambria Math",math}
+/* 고정폭 글꼴(Mac SF Mono, Windows Consolas)은 기기마다 달라서 code도 본문 글꼴로 쓴다 */
+code,pre,kbd,samp,.fc code,.fc pre.eq{font-family:var(--sans)}
+
+/* 한국어 줄바꿈: 띄어쓰기 단위로만 줄을 바꾼다. 한 단어가 칸보다 길 때만 단어 안에서 끊는다.
+   원래 절 제목은 word-break:break-word라서 "박막"이 "박 / 막"처럼 갈렸다. */
+body{word-break:keep-all;overflow-wrap:break-word}
+.paper h3.subsection-heading,.paper .section-title{word-break:keep-all}
+
 /* 사이드바: 장마다 붙어 있던 상태 표시(초안·개정)를 뺐으므로 세 번째 칸을 없앤다 */
 .chapter-link{grid-template-columns:22px minmax(0,1fr)}
+
+/* 상단 바는 불투명하게 둔다. 절로 이동하면 절 경계선이 상단 바 밑에 가려지고 앞 절 내용이 보이지 않게 한다.
+   상단 바 높이는 화면 폭에 따라 달라지므로 textbook_ui.js가 --jump-top으로 넣는다. */
+.topbar{background:#fff}
+.paper h3.subsection-heading[id]{scroll-margin-top:var(--jump-top,65px)}
 
 /* 헤더 읽기 도구 */
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}

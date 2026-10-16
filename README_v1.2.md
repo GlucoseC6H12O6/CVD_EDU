@@ -135,6 +135,7 @@
 
 - **다음 장 자동 넘김.** 장 끝에 다음 장(Part의 마지막 장이면 다음 Part의 첫 장) 안내를 두고, 바닥에 닿은 뒤 다시 내리면(휠 약 세 칸, 터치로 끌어올리기, ↓·Space·PageDown 두 번) 넘어간다. 바닥에 닿게 만든 스크롤의 관성은 세지 않는다. 안내를 눌러도 된다. 마지막 장(10-05)에서는 "마지막 장"으로 표시한다.
 - **근거 호버.** `[논문 3]`·`[특허 1]`·`[리뷰 2]` 같은 표시에 마우스를 올리면 장 끝 참고 목록의 그 항목이 카드로 뜬다. Part 03의 `S##`은 장 끝 '출처와 확인 수준' 표의 행(서지, 유형, 확인 수준, 핵심 내용 앞부분)을 보여 준다. 번호 없는 표시(계산, 현장 등)는 그 표시의 뜻을 보여 준다. 터치 화면에서는 누르면 뜨고, 바깥을 누르거나 Esc로 닫는다. 코드는 `textbook_ui.js`·`textbook_ui.css`이며 빌드가 HTML에 넣는다.
+- **절 위치 이동.** 사이드바나 장 첫머리 목차에서 절을 누르면 그 절까지 부드럽게 스크롤한다. 원본 스크립트의 이동·읽던 위치 기록은 그대로 두고, `textbook_ui.js`가 이동 직후 원래 위치에서 목표까지 애니메이션으로 다시 스크롤한다. 시스템의 '동작 줄이기' 설정이 켜져 있으면 바로 이동한다. 도착하면 절 경계선이 상단 바 바로 밑에 오고, 상단 바는 불투명해서 앞 절 내용이 비치지 않는다. 상단 바 높이는 화면 폭에 따라 달라서 스크립트가 `--jump-top`으로 맞춘다.
 - **제작 정보 삭제.** 장 끝의 "NN-NN · v1.2 교과서 원고는 textbook/NN-NN.md에서 생성했다", 사이드바의 "Engineering textbook · 89 chapters · first draft", 상단의 "89개 Chapter · 1차 집필본", 장마다 붙은 "초안·개정" 표시, Part 03 머리표의 판 번호, 탭 제목의 판 번호를 뺐다. Part 03 장 끝 '자료 수집 기록'은 '출처와 확인 수준'으로 이름을 바꾸고, 화면에 보일 때만 작업 일지 문구(수집일과 원고 파일 이름, "사용자 요청으로", 날짜 붙은 추가 표시, 이전 판 이야기, 재검색 기록)를 걸러 낸다(`apply_textbook.reader_srcs`). `film_content/*_자료수집.md` 원본은 연구 기록이라 그대로 두었다.
 - **Part 10 · Device Integration (5개 장).** 10-01 소자 구조와 공정 흐름(세 소자 비교, Cell Array와 Peripheral 회로, FEOL·MOL·BEOL, 소자별 CVD 막의 용도 표), 10-02 Logic Transistor(Strain, HKMG, FinFET, Nanosheet), 10-03 Logic 배선(W Plug, Cu Damascene, Low-k, 금속 교체), 10-04 DRAM(1T1C 원리와 읽기 신호 계산, 묻힌 Word Line, Capacitor 공정과 용량 계산), 10-05 NAND(Charge Trap, BiCS, 3D NAND 공정, Dual-deck). 장마다 약 8,400–9,900자(그림 캡션 포함), 마지막 절에 "모듈별 CVD 관리 항목" 표가 있다. 그림 18장(미국 특허 7장: US 7,852,675 FIG. 5·9, US 6,413,802 FIG. 1, US 6,518,171 FIG. 1A–1D, US 3,387,286 FIG. 1, US 12,058,850 FIG. 2 / CC BY 논문 11장, 00-01 그림 1장 재사용). 출처와 확인 수준은 `textbook/_자료수집_part10.md`.
 - **빌드.** `apply_textbook.py`가 `_keep` JSON이 없는 `textbook/NN-NN.md`를 새 Chapter로 보고 template, 사이드바 버튼, 장 이름·절 목록을 더한다(`add_chapter`). 새 Part의 사이드바 제목은 `NEW_PARTS`에 둔다. 검사는 template 수, 사이드바와 template의 일치, 제작 정보 문구가 남지 않았는지를 더 본다.
@@ -165,6 +166,16 @@
 - **그림 설명:** 300자가 넘던 127개 캡션을 캡션(대상·조건·축·범례)과 출처 줄 아래 본문 문단(읽히는 변화·의미·한계)으로 나눴다. 정보는 줄이지 않았다. 03-18에서는 표 해설 목록을 그림 앞으로 옮겼다.
 - Part 10의 점검 질문은 넣지 않았다(사용자 선택).
 
+## 글꼴과 줄바꿈 (2026-10-17, 사용자 요청)
+
+- Mac에서 보이는 글꼴(영문 SF Pro, 한글 Apple SD Gothic Neo)이 Windows에서도 같게 보이도록 했다. 원래 글꼴 지정은 시스템 기본 글꼴뿐이라 Windows에서는 Segoe UI와 맑은 고딕으로 바뀌었다.
+- Apple 글꼴은 Apple 기기 밖으로 배포할 수 없어서, 같은 모양으로 만든 Pretendard v1.3.9(SIL OFL, `fonts/PretendardVariable.woff2`, 라이선스 `fonts/Pretendard_LICENSE.txt`)를 쓴다. 굵기를 연속으로 바꿀 수 있는 가변 글꼴이라 650·750 같은 중간 굵기도 그대로 나온다.
+- 수식은 Mac에 설치된 STIX Two Math 2.13을 쓰고, Windows는 Cambria Math로 바뀌었다. 같은 판의 STIX Two Math(SIL OFL, `fonts/STIXTwoMath-Regular.woff2`, 라이선스 `fonts/STIXTwo_OFL.txt`)를 `STIX Two Math Web`이라는 이름으로 넣어, 설치된 글꼴이 없는 기기에서 쓴다.
+- 외부 글꼴 링크가 막힌 환경이 있어, `apply_textbook.py`가 두 글꼴 파일을 base64로 HTML 안에 넣는다(약 3.5MB 증가). 오프라인에서도 같다.
+- `textbook_ui.css`의 `--sans` 순서는 Apple 시스템 글꼴 → Pretendard → 맑은 고딕이다. Mac·iPhone은 지금 화면 그대로다. Apple 글꼴에 없는 아래 첨자 ᵢ(9곳)만 Pretendard로 그린다. Pretendard는 Apple 글꼴보다 글자 폭이 조금 좁아 줄바꿈 위치가 약간 다를 수 있다.
+- 고정폭 글꼴은 Mac에서 SF Mono, Windows에서 Consolas로 달랐고 SF Mono는 Apple 기기 밖으로 배포할 수 없어서, `code`(Part 03 첫머리의 근거 번호 안내, 00-05의 Chapter 연결 등 22곳)도 본문 글꼴로 쓴다. 회색 바탕과 크기는 그대로다.
+- 한국어 줄바꿈은 화면 전체에서 띄어쓰기 단위로 한다(`word-break:keep-all`). 원래는 본문 문단과 목록에만 적용되어 있어서, 장·절 제목이 "박 / 막"처럼 단어 중간에서 갈렸다. 한 단어가 칸보다 길 때만 단어 안에서 끊는다. 94개 Chapter를 데스크톱 폭과 375px 폭에서 열어 가로로 넘치는 곳이 바꾸기 전과 같은지 확인했다.
+
 ## 원고 위치
 
 | 대상 | 원고 | 비고 |
@@ -173,6 +184,7 @@
 | Part 10 (5개 Chapter) | `textbook/10-NN.md` | 보존 블록 없음. 첫 줄 `# 10-NN · English Name — 부제`에서 제목과 사이드바 이름을 읽는다 |
 | Part 03 본문 | `film_content/03-NN_*_본문.md` | 자료 수집 기록은 `_자료수집.md` |
 | 그림 파일 | `film_content/figures/` | 원본은 `figures/_staging`, 자르기·복사는 `prep_figures.py` |
+| 글꼴 | `fonts/PretendardVariable.woff2`, `fonts/STIXTwoMath-Regular.woff2` | SIL OFL(`fonts/Pretendard_LICENSE.txt`, `fonts/STIXTwo_OFL.txt`), 빌드가 HTML 안에 넣는다 |
 | Part 00·01·02·04–10 그림 자료 | `textbook/_자료수집_part00.md`, `_자료수집_part01.md`, `_자료수집_part02-09.md`, `_자료수집_part10.md` | 출처·라이선스·확인 수준 |
 
 원고 문법: `## N. 제목`은 원래 절(번호를 바꾸지 않는다), `## 제목 {h2:N}`은 원래 h2 절, `{{keep:N}}`은 보존 블록(각각 한 번만), `[글](#ref:XX-YY)`는 Chapter 연결, `>`로 시작하는 줄은 상자(이해 확인 등)다.
