@@ -16,6 +16,12 @@ TiN, TaN, WN은 전이 금속 질화물이다. 전기가 통하면서 화학적�
 | TaN | Cu 배선 Barrier(TaN/Ta) | PVD, ALD(PDMAT + NH₃) | PVD 약 240 µΩ·cm. ALD는 수천 µΩ·cm 이상 | [S12, S13] |
 | WN · WNₓCᵧ | Cu·W Barrier | ALD(WF₆ + NH₃ + TEB) | 약 350 µΩ·cm | [S16] |
 
+| 막 | 화학식과 상 |
+|---|---|
+| TiN | TiNₓ. 암염(NaCl)형 입방정 δ-TiN이 N/Ti 1 근처의 넓은 조성 범위에서 유지된다 [리뷰]. TiCl₄ 원료 막에는 Cl, TDMAT 원료 막에는 C가 섞인다 [S01, S06] |
+| TaN | 질소량에 따라 상이 바뀐다. 금속성 Ta₂N(육방정)과 TaN(입방정·육방정) [리뷰], 질소가 더 많으면 절연성 Ta₃N₅ [S10] |
+| WN | W₂N(입방정)과 WNₓ [리뷰]. TEB를 넣은 ALD 막은 탄소가 든 WNₓCᵧ [S16] |
+
 | 핵심 사실 | 내용 |
 |---|---|
 | TiN의 염소 | 증착 온도가 낮을수록 많이 남고 비저항이 오른다 [S01, S02] |

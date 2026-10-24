@@ -12,6 +12,7 @@ SiCOH(SiOC, SiOC:H, CDO, OSG로도 부른다)는 SiO₂ 네트워크의 일부 �
 
 | 항목 | 내용 |
 |---|---|
+| 화학식 | SiCₓOᵧ:H(SiCOH, SiOC:H). SiO₂ 망의 일부 O 자리에 메틸기(–CH₃)가 붙은 구조다. 모든 Si에 메틸기가 하나씩 붙은 극한이 CH₃SiO₁.₅(Methylsilsesquioxane, MSQ) 조성이다. 다공성 pSiCOH는 같은 골격에 기공이 더해진 것이다 |
 | 역할 | Cu 배선 층간 절연막 (Low-k, Ultralow-k) |
 | 유전율 | 치밀 SiCOH 약 2.7–3.0. 다공성 pSiCOH 1.8–2.95 [특허 S08]. 양산 적용 예 k 2.4(45 nm) [리뷰 S01] |
 | 증착 방식 | PECVD, 400 °C 이하. 다공성은 증착 후 UV Cure |

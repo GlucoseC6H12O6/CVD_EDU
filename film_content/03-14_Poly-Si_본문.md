@@ -12,6 +12,7 @@ Poly-Si는 작은 Si 결정립이 모인 막이다. 도핑하면 도체가 되�
 
 | 항목 | 내용 |
 |---|---|
+| 화학식 | Si(다결정). 화학식은 단결정·비정질 Si와 같고, 다른 것은 결정립과 결정립계다. 도핑한 막은 n⁺·p⁺ Poly-Si로 부르며 P·As·B가 들어간다 |
 | 역할 | 게이트·Word Line 전극, 저장 전극, Contact Plug, 채널(3D NAND), 희생 구조 |
 | 증착 방식 | LPCVD. Batch Furnace 또는 단일 Wafer |
 | 반응 | SiH₄ → Si + 2H₂. 580–650 °C [리뷰 S01] |

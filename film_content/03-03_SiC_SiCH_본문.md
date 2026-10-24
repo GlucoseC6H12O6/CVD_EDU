@@ -12,6 +12,7 @@
 
 | 항목 | 내용 |
 |---|---|
+| 화학식 | a-SiC:H, 일반식 SiₓCᵧ:H. Si : C = 1 : 1인 결정 SiC와 달리 Si/C 비와 수소량이 원료와 조건에 따라 변한다. Si–C 골격에 Si–CH₃·Si–H·C–H가 결합 끝으로 남는다(§2.1) |
 | 역할 | Cu Cap, Cu 확산 Barrier, Etch Stop, 수분 차단 |
 | 증착 방식 | PECVD (CCP), BEOL 열 예산 내(400 °C 이하) |
 | 전구체 | 3MS (CH₃)₃SiH · 4MS (CH₃)₄Si + He. 변형: + NH₃(SiCN) · + CO₂(SiCO) · + C₂H₄ |

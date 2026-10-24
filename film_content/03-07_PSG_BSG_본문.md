@@ -12,6 +12,7 @@ PSG는 인을, BSG는 붕소를 넣은 SiO₂다. 둘을 합친 것이 BPSG(→ 
 
 | 항목 | PSG | BSG |
 |---|---|---|
+| 화학식 | SiO₂–P₂O₅ 2성분 유리 | SiO₂–B₂O₃ 2성분 유리 |
 | 도펀트 | P (P₂O₅로 존재) | B (B₂O₃로 존재) |
 | 주 기능 | Na⁺·K⁺ Gettering, Passivation, PMD Gap-fill, n형 확산원 | p형 고체 확산원, 희생막 |
 | Reflow | 950–1,100 °C [특허 S03] | BPSG의 구성 성분으로 Flow 온도를 낮춘다(→ 03-06). |

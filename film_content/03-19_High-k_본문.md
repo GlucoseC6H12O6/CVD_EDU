@@ -12,6 +12,7 @@ High-k는 $\mathrm{SiO_{2}}(k = 3.9)$보다 유전율이 높은 절연막이다.
 
 | 항목 | 게이트 | DRAM Capacitor |
 |---|---|---|
+| 화학식 | HfO₂. Si를 섞으면 HfSiOₓ, Zr를 섞으면 HfZrO(Hf₁₋ₓZrₓO₂) | ZrO₂, Al₂O₃를 ZrO₂ 사이에 끼운 적층 |
 | 주 재료 | HfO₂ | ZrO₂/Al₂O₃/ZrO₂ (ZAZ) |
 | 유전율 | 약 20–25 [리뷰 S01, 논문 S12] | 정방정 ZrO₂ 약 40 [논문 S13]. ZAZ 전체 약 28 [논문 S14] |
 | 두께 | 1.5–3 nm | 5–10 nm |

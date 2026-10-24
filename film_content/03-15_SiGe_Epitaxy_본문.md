@@ -12,6 +12,7 @@ Epitaxy는 기판의 결정 격자를 그대로 이어받아 단결정 막을 �
 
 | 항목 | 내용 |
 |---|---|
+| 화학식 | Si₁₋ₓGeₓ(x는 Ge 원자 분율). Si와 Ge는 모든 비율에서 섞여 같은 다이아몬드 구조의 단결정을 이룬다. 예: Ge 30 %는 Si₀.₇Ge₀.₃이다. 붕소를 넣은 S/D 막은 SiGe:B, 인을 넣은 Si 막은 Si:P로 쓴다 |
 | 역할 | Source/Drain 응력원, 채널, Nanosheet 적층의 희생층, 기판 Epi 층 |
 | 증착 방식 | RPCVD(감압 CVD). 단일 Wafer, 수 ~ 수십 Torr |
 | Si 전구체 | SiH₂Cl₂(DCS), SiH₄, Si₂H₆ 등 |
