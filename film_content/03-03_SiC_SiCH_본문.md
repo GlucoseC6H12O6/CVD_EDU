@@ -12,7 +12,7 @@
 
 | 항목 | 내용 |
 |---|---|
-| 화학식 | a-SiC:H, 일반식 SiₓCᵧ:H. Si : C = 1 : 1인 결정 SiC와 달리 Si/C 비와 수소량이 원료와 조건에 따라 변한다. Si–C 골격에 Si–CH₃·Si–H·C–H가 결합 끝으로 남는다(§2.1) |
+| 조성식 | a-SiC:H, 일반식 SiₓCᵧ:H. Si : C = 1 : 1인 결정 SiC와 달리 Si/C 비와 수소량이 원료와 조건에 따라 변한다. Si–C 골격에 Si–CH₃·Si–H·C–H가 결합 끝으로 남는다(§2.1) |
 | 역할 | Cu Cap, Cu 확산 Barrier, Etch Stop, 수분 차단 |
 | 증착 방식 | PECVD (CCP), BEOL 열 예산 내(400 °C 이하) |
 | 전구체 | 3MS (CH₃)₃SiH · 4MS (CH₃)₄Si + He. 변형: + NH₃(SiCN) · + CO₂(SiCO) · + C₂H₄ |
@@ -20,6 +20,14 @@
 | 두께 | 수 nm ~ 수십 nm [현장] |
 | 핵심 Trade-off | 낮은 k(성긴 막) ↔ Barrier·기밀성(치밀한 막) [논문 S01] |
 | 변형막과의 관계 | N 첨가 → SiCN(→ 03-12). O 첨가 → SiCO. Low-k 본체는 SiCOH(→ 03-10) |
+
+**증착 반응식.** 첫 줄은 실제 막을 적은 개략식이다. 막에는 Si–CH₃·Si–H가 남아 조성이 하나로 정해지지 않는다. 아래 두 줄은 Si : C = 1 : 1이 되려면 남는 탄소가 CH₄로 빠져야 한다는 것을 보여 주는 극한의 식이다 [계산]. 3MS는 Si 하나당 C 셋, 4MS는 C 넷을 가져온다.
+
+$$
+\mathrm{(CH_3)_3SiH} \rightarrow \mathrm{Si}_x\mathrm{C}_y\text{:H} + \mathrm{CH_4} + \mathrm{H_2} \qquad (\text{PECVD, 개략식})
+\mathrm{(CH_3)_3SiH} \rightarrow \mathrm{SiC} + 2\,\mathrm{CH_4} + \mathrm{H_2} \qquad (\text{3MS, Si : C = 1 : 1 극한})
+\mathrm{(CH_3)_4Si} \rightarrow \mathrm{SiC} + 3\,\mathrm{CH_4} \qquad (\text{4MS, Si : C = 1 : 1 극한})
+$$
 
 ---
 

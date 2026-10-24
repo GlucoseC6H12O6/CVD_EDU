@@ -12,7 +12,7 @@ SiCOH(SiOC, SiOC:H, CDO, OSG로도 부른다)는 SiO₂ 네트워크의 일부 �
 
 | 항목 | 내용 |
 |---|---|
-| 화학식 | SiCₓOᵧ:H(SiCOH, SiOC:H). SiO₂ 망의 일부 O 자리에 메틸기(–CH₃)가 붙은 구조다. 모든 Si에 메틸기가 하나씩 붙은 극한이 CH₃SiO₁.₅(Methylsilsesquioxane, MSQ) 조성이다. 다공성 pSiCOH는 같은 골격에 기공이 더해진 것이다 |
+| 조성식 | SiCₓOᵧ:H(SiCOH, SiOC:H). SiO₂ 망의 일부 O 자리에 메틸기(–CH₃)가 붙은 구조다. 모든 Si에 메틸기가 하나씩 붙은 극한이 CH₃SiO₁.₅(Methylsilsesquioxane, MSQ) 조성이다. 다공성 pSiCOH는 같은 골격에 기공이 더해진 것이다 |
 | 역할 | Cu 배선 층간 절연막 (Low-k, Ultralow-k) |
 | 유전율 | 치밀 SiCOH 약 2.7–3.0. 다공성 pSiCOH 1.8–2.95 [특허 S08]. 양산 적용 예 k 2.4(45 nm) [리뷰 S01] |
 | 증착 방식 | PECVD, 400 °C 이하. 다공성은 증착 후 UV Cure |
@@ -21,6 +21,14 @@ SiCOH(SiOC, SiOC:H, CDO, OSG로도 부른다)는 SiO₂ 네트워크의 일부 �
 | Modulus | k 2.9에서 6.7–16.5 GPa(전구체에 따라) [특허 S04]. k 2.4에서 3.2 GPa [특허 S04] ~ 8.4 GPa [논문 S05]. k 2.1에서 6–13 GPa [논문 S06] |
 | 대표 문제 | Plasma 손상(탄소 고갈 → k 상승) [특허 S08], 낮은 기계적 강도, 흡습 |
 | 핵심 Trade-off | 낮은 k(기공·메틸기↑) ↔ Modulus ↔ Plasma 내성 |
+
+**증착 반응식.** 첫 줄이 DEMS 치밀막의 개략식이다. 둘째 줄은 Si에 붙은 메틸기는 모두 남고 Ethoxy기와 Si–H만 탄다고 본 극한이다. 이때 막이 MSQ 조성 CH₃SiO₁.₅가 된다. 원소 수를 맞췄다 [계산]. 실제 막은 메틸기 일부를 잃고 일부 Si는 메틸기 없이 SiO₂ 망에 들어간다. 마지막 줄은 다공성 막을 만드는 UV Cure다.
+
+$$
+\mathrm{CH_3SiH(OC_2H_5)_2} + \mathrm{O_2} \rightarrow \mathrm{SiC}_x\mathrm{O}_y\text{:H} + \mathrm{CO_2} + \mathrm{H_2O} \qquad (\text{DEMS PECVD, 개략식})
+2\,\mathrm{CH_3SiH(OC_2H_5)_2} + 13\,\mathrm{O_2} \rightarrow 2\,\mathrm{CH_3SiO_{1.5}} + 8\,\mathrm{CO_2} + 11\,\mathrm{H_2O} \qquad (\text{MSQ 극한})
+\text{SiCOH} + \text{Porogen} \rightarrow \text{pSiCOH} + \mathrm{C}_x\mathrm{H}_y\,(\mathrm{g}) \qquad (\text{UV Cure, 기공 형성})
+$$
 
 ---
 

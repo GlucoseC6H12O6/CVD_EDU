@@ -12,7 +12,7 @@ Epitaxy는 기판의 결정 격자를 그대로 이어받아 단결정 막을 �
 
 | 항목 | 내용 |
 |---|---|
-| 화학식 | Si₁₋ₓGeₓ(x는 Ge 원자 분율). Si와 Ge는 모든 비율에서 섞여 같은 다이아몬드 구조의 단결정을 이룬다. 예: Ge 30 %는 Si₀.₇Ge₀.₃이다. 붕소를 넣은 S/D 막은 SiGe:B, 인을 넣은 Si 막은 Si:P로 쓴다 |
+| 조성식 | Si₁₋ₓGeₓ(x는 Ge 원자 분율). Si와 Ge는 모든 비율에서 섞여 같은 다이아몬드 구조의 단결정을 이룬다. 예: Ge 30 %는 Si₀.₇Ge₀.₃이다. 붕소를 넣은 S/D 막은 SiGe:B, 인을 넣은 Si 막은 Si:P로 쓴다 |
 | 역할 | Source/Drain 응력원, 채널, Nanosheet 적층의 희생층, 기판 Epi 층 |
 | 증착 방식 | RPCVD(감압 CVD). 단일 Wafer, 수 ~ 수십 Torr |
 | Si 전구체 | SiH₂Cl₂(DCS), SiH₄, Si₂H₆ 등 |
@@ -23,6 +23,14 @@ Epitaxy는 기판의 결정 격자를 그대로 이어받아 단결정 막을 �
 | 임계 두께 | Ge 30 %에서 약 52 nm(People–Bean). 실용 한계는 그 70 % 이하 [특허 S13] |
 | 선택 성장 | HCl로 유전체 위 증착을 막는다. HCl은 성장 속도를 낮춘다 [현장 S03] |
 | 핵심 Trade-off | 낮은 온도(급준한 계면, 준안정 유지) ↔ 성장 속도·결정 품질 / 선택성 ↔ 성장 속도 / Ge 농도(변형·식각 선택비) ↔ 임계 두께 |
+
+**증착 반응식.** 첫 줄은 막의 Ge 원자 분율을 x로 놓고 원소 수를 맞춘 식이다 [계산]. DCS는 분해하며 HCl을 스스로 내놓는다. 둘째 줄은 선택 성장의 원리로, HCl이 유전체 위에 생긴 작은 Si 핵을 깎아 낸다(§3). 셋째 줄은 붕소 도핑이다.
+
+$$
+(1-x)\,\mathrm{SiH_2Cl_2} + x\,\mathrm{GeH_4} \rightarrow \mathrm{Si}_{1-x}\mathrm{Ge}_x + 2(1-x)\,\mathrm{HCl} + 2x\,\mathrm{H_2} \qquad (\text{x = Ge 원자 분율})
+\mathrm{Si} + 2\,\mathrm{HCl} \rightarrow \mathrm{SiCl_2} + \mathrm{H_2} \qquad (\text{선택 성장, HCl 식각})
+\mathrm{B_2H_6} \rightarrow 2\,\mathrm{B} + 3\,\mathrm{H_2} \qquad (\text{SiGe:B 도핑})
+$$
 
 ---
 

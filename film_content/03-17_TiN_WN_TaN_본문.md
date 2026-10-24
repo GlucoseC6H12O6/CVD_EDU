@@ -16,7 +16,7 @@ TiN, TaN, WN은 전이 금속 질화물이다. 전기가 통하면서 화학적�
 | TaN | Cu 배선 Barrier(TaN/Ta) | PVD, ALD(PDMAT + NH₃) | PVD 약 240 µΩ·cm. ALD는 수천 µΩ·cm 이상 | [S12, S13] |
 | WN · WNₓCᵧ | Cu·W Barrier | ALD(WF₆ + NH₃ + TEB) | 약 350 µΩ·cm | [S16] |
 
-| 막 | 화학식과 상 |
+| 막 | 조성과 상 |
 |---|---|
 | TiN | TiNₓ. 암염(NaCl)형 입방정 δ-TiN이 N/Ti 1 근처의 넓은 조성 범위에서 유지된다 [리뷰]. TiCl₄ 원료 막에는 Cl, TDMAT 원료 막에는 C가 섞인다 [S01, S06] |
 | TaN | 질소량에 따라 상이 바뀐다. 금속성 Ta₂N(육방정)과 TaN(입방정·육방정) [리뷰], 질소가 더 많으면 절연성 Ta₃N₅ [S10] |
@@ -28,6 +28,16 @@ TiN, TaN, WN은 전이 금속 질화물이다. 전기가 통하면서 화학적�
 | TDMAT TiN | 증착 직후는 탄소가 든 막. H₂/N₂ Plasma로 탄소를 빼야 한다 [S06] |
 | ALD TaN | NH₃로는 절연상 Ta₃N₅가 된다 [S10] |
 | Blanket 비저항 ≠ 소자 저항 | 3 nm ALD TaN이 PVD보다 Via 저항이 28 % 낮았다 [S12] |
+
+**증착 반응식.** 계수를 붙인 식은 원소 수를 맞췄다 [계산]. TDMAT 열분해 막은 탄소가 든 막이라 개략식으로 적었다. 이 탄소를 H₂/N₂ Plasma로 빼내야 TiN이 된다(§3.2). 셋째 줄은 PDMAT과 NH₃가 Ta를 환원하지 못해 절연상 Ta₃N₅가 되는 반응이다 [S10]. 넷째 줄 WN의 HF는 남는 NH₃와 만나 NH₄F가 된다.
+
+$$
+6\,\mathrm{TiCl_4} + 8\,\mathrm{NH_3} \rightarrow 6\,\mathrm{TiN} + 24\,\mathrm{HCl} + \mathrm{N_2} \qquad (\text{TiN, ALD·CVD})
+\mathrm{Ti[N(CH_3)_2]_4} \rightarrow \mathrm{TiC}_x\mathrm{N}_y + \mathrm{HN(CH_3)_2} + \cdots \qquad (\text{TDMAT 열분해})
+3\,\mathrm{Ta[N(CH_3)_2]_5} + 5\,\mathrm{NH_3} \rightarrow \mathrm{Ta_3N_5} + 15\,\mathrm{HN(CH_3)_2} \qquad (\text{PDMAT + NH₃})
+4\,\mathrm{WF_6} + 8\,\mathrm{NH_3} \rightarrow 2\,\mathrm{W_2N} + 24\,\mathrm{HF} + 3\,\mathrm{N_2} \qquad (\text{WN})
+\mathrm{WF_6} + \mathrm{NH_3} + \mathrm{B(C_2H_5)_3} \rightarrow \mathrm{WN}_x\mathrm{C}_y + \mathrm{BF_3} + \mathrm{HF} + \cdots \qquad (\text{TEB를 더한 ALD})
+$$
 
 ---
 

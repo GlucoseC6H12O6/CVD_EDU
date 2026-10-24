@@ -12,7 +12,7 @@ SiBN과 SiBCN은 SiN에 붕소(와 탄소)를 넣어 **유전율을 낮춘 질�
 
 | 항목 | 내용 |
 |---|---|
-| 화학식 | SiBN은 $\mathrm{Si}_x\mathrm{B}_y\mathrm{N}_z$:H, SiBCN은 $\mathrm{Si}_x\mathrm{B}_y\mathrm{C}_z\mathrm{N}_w$:H. 원소 비가 정해지지 않은 비정질 질화막이고, PECVD 막은 수소를 Si–H·N–H·B–H로 품는다. 예: Borazine PECVD SiBN Si₀.₀₉B₀.₃₉N₀.₅₁ [논문 S01]. 양 끝의 기준은 Si₃N₄와 BN이다 |
+| 조성식 | SiBN은 $\mathrm{Si}_x\mathrm{B}_y\mathrm{N}_z$:H, SiBCN은 $\mathrm{Si}_x\mathrm{B}_y\mathrm{C}_z\mathrm{N}_w$:H. 원소 비가 정해지지 않은 비정질 질화막이고, PECVD 막은 수소를 Si–H·N–H·B–H로 품는다. 예: Borazine PECVD SiBN Si₀.₀₉B₀.₃₉N₀.₅₁ [논문 S01]. 양 끝의 기준은 Si₃N₄와 BN이다 |
 | 역할 | Low-k Spacer·Liner(ALD). PECVD 막은 배선 덮개·Cu Barrier [논문 S01, 특허 S17·S18], BN·SiBN Spacer·Hardmask [특허 S15], DRAM Capacitor 지지막·Stopper [특허 S16] |
 | 증착 방식 | 수 nm Spacer는 ALD(열 또는 Plasma). 두꺼운 Blanket 막은 PECVD(원료 동시 공급, 또는 증착과 질화 Plasma의 반복) |
 | 전구체 | Si: SiH₂Cl₂·SiH₄·Si₂H₆ / B: BCl₃·B₂H₆·Borazine / C: C₂H₄·CH₄ / N: NH₃·N₂. PECVD의 기본 조합은 SiH₄ + B₂H₆(N₂·Ar 희석) + NH₃ + N₂ |
@@ -21,6 +21,16 @@ SiBN과 SiBCN은 SiN에 붕소(와 탄소)를 넣어 **유전율을 낮춘 질�
 | 유전율 | PECVD SiBN 4.7, BN 4.1, SiBON 3.9 [논문 S01]. PECVD BN(증착–질화 반복) 4.7, PECVD SiBN 5.5 미만 [특허 S15]. ALD SiBN 약 4.4 [특허 S07]. 기준 SiN 약 7 |
 | 적용 효과 | 14 nm FinFET에서 Ring Oscillator 지연 약 8 % 개선 [논문 S03] |
 | 핵심 Trade-off | 낮은 k(B·O↑) ↔ HF·산화 내성(C·N↑) [특허 S05]. PECVD 막은 여기에 흡습에 따른 k 상승 [특허 S18]과 단차 피복 [특허 S19]이 더해진다 |
+
+**증착 반응식.** 첫 줄이 PECVD 동시 공급의 개략식이다 [특허 S15]. SiBN은 원소 비가 하나로 정해지지 않아 계수를 붙이지 않았다. 둘째·셋째 줄은 SiBN의 양 끝인 Si₃N₄와 BN이 생기는 반응이고 원소 수를 맞췄다 [계산]. 넷째 줄은 Borazine 한 가지로 B와 N을 함께 공급하는 경우다 [논문 S01]. 마지막 줄은 ALD SiBCN의 원료 순서를 한 식으로 묶은 개략식이다 [특허 S04].
+
+$$
+\mathrm{SiH_4} + \mathrm{B_2H_6} + \mathrm{NH_3} + \mathrm{N_2} \rightarrow \mathrm{Si}_x\mathrm{B}_y\mathrm{N}_z\text{:H} + \mathrm{H_2} \qquad (\text{PECVD 동시 공급})
+3\,\mathrm{SiH_4} + 4\,\mathrm{NH_3} \rightarrow \mathrm{Si_3N_4} + 12\,\mathrm{H_2} \qquad (\text{Si 쪽 끝})
+\mathrm{B_2H_6} + 2\,\mathrm{NH_3} \rightarrow 2\,\mathrm{BN} + 6\,\mathrm{H_2} \qquad (\text{B 쪽 끝})
+\mathrm{B_3N_3H_6} \rightarrow 3\,\mathrm{BN} + 3\,\mathrm{H_2} \qquad (\text{Borazine PECVD})
+\mathrm{SiH_2Cl_2} + \mathrm{BCl_3} + \mathrm{C_2H_4} + \mathrm{NH_3} \rightarrow \mathrm{Si}_x\mathrm{B}_y\mathrm{C}_z\mathrm{N}_w + \mathrm{HCl} + \mathrm{H_2} \qquad (\text{ALD SiBCN})
+$$
 
 ---
 

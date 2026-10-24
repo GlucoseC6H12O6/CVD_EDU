@@ -12,7 +12,7 @@ Poly-Si는 작은 Si 결정립이 모인 막이다. 도핑하면 도체가 되�
 
 | 항목 | 내용 |
 |---|---|
-| 화학식 | Si(다결정). 화학식은 단결정·비정질 Si와 같고, 다른 것은 결정립과 결정립계다. 도핑한 막은 n⁺·p⁺ Poly-Si로 부르며 P·As·B가 들어간다 |
+| 조성식 | Si(다결정). 화학식은 단결정·비정질 Si와 같고, 다른 것은 결정립과 결정립계다. 도핑한 막은 n⁺·p⁺ Poly-Si로 부르며 P·As·B가 들어간다 |
 | 역할 | 게이트·Word Line 전극, 저장 전극, Contact Plug, 채널(3D NAND), 희생 구조 |
 | 증착 방식 | LPCVD. Batch Furnace 또는 단일 Wafer |
 | 반응 | SiH₄ → Si + 2H₂. 580–650 °C [리뷰 S01] |
@@ -22,6 +22,14 @@ Poly-Si는 작은 Si 결정립이 모인 막이다. 도핑하면 도체가 되�
 | 집합 조직 | 600–650 °C {110}, 650–700 °C {100} [S08] |
 | In-situ 도핑 | PH₃: 증착 속도 ↓. B₂H₆: 증착 속도 ↑ [특허 S10, 논문 S11] |
 | 핵심 Trade-off | 증착 온도(구조·거칠기·응력) ↔ 생산성 ↔ 도핑 균일도 |
+
+**증착 반응식.** 모두 원소 수를 맞춘 열분해 식이다 [계산]. 도핑 원료의 P·B는 막의 Si 자리에 들어간다.
+
+$$
+\mathrm{SiH_4} \rightarrow \mathrm{Si} + 2\,\mathrm{H_2} \qquad (\text{580–650 °C})
+2\,\mathrm{PH_3} \rightarrow 2\,\mathrm{P} + 3\,\mathrm{H_2} \qquad (\text{n⁺ In-situ 도핑})
+\mathrm{B_2H_6} \rightarrow 2\,\mathrm{B} + 3\,\mathrm{H_2} \qquad (\text{p⁺ In-situ 도핑})
+$$
 
 ---
 

@@ -12,13 +12,24 @@ PSG는 인을, BSG는 붕소를 넣은 SiO₂다. 둘을 합친 것이 BPSG(→ 
 
 | 항목 | PSG | BSG |
 |---|---|---|
-| 화학식 | SiO₂–P₂O₅ 2성분 유리 | SiO₂–B₂O₃ 2성분 유리 |
+| 조성식 | SiO₂–P₂O₅ 2성분 유리 | SiO₂–B₂O₃ 2성분 유리 |
 | 도펀트 | P (P₂O₅로 존재) | B (B₂O₃로 존재) |
 | 주 기능 | Na⁺·K⁺ Gettering, Passivation, PMD Gap-fill, n형 확산원 | p형 고체 확산원, 희생막 |
 | Reflow | 950–1,100 °C [특허 S03] | BPSG의 구성 성분으로 Flow 온도를 낮춘다(→ 03-06). |
 | 농도 예 | P 약 3–5 % (한 공정의 최적값) [특허 S02] | 확산원용: B 1×10²⁰ – 5×10²¹ cm⁻³, 두께 2–5 nm [특허 S06] |
 | 증착 | SACVD(TEOS + TEPO + O₃), PECVD, HDP(SiH₄ + PH₃ + O₂), ALD | CVD, PEALD(B₂O₃ / SiO₂ Cycle 교대) [특허 S07] |
 | 약점 | 인이 많으면 흡습해 인산이 된다. | 흡습해 붕산이 된다. PSG보다 불안정 |
+
+**증착 반응식.** 첫 두 줄이 PSG, 다음 두 줄이 BSG의 증착 반응이다. 막이 섞인 유리인 첫 줄은 계수 없이 적었고, 나머지는 원소 수를 맞췄다 [계산]. 마지막 두 줄은 위 표의 ‘약점’ 행, 곧 도펀트 산화물이 물을 먹어 인산·붕산이 되는 반응이다.
+
+$$
+\mathrm{Si(OC_2H_5)_4} + \mathrm{PO(OC_2H_5)_3} + \mathrm{O_3} \rightarrow \mathrm{SiO_2{–}P_2O_5} + \mathrm{CO_2} + \mathrm{H_2O} \qquad (\text{PSG, SACVD})
+2\,\mathrm{PH_3} + 4\,\mathrm{O_2} \rightarrow \mathrm{P_2O_5} + 3\,\mathrm{H_2O} \qquad (\text{PSG, HDP의 P 쪽})
+\mathrm{B_2H_6} + 3\,\mathrm{O_2} \rightarrow \mathrm{B_2O_3} + 3\,\mathrm{H_2O} \qquad (\text{BSG, CVD})
+2\,\mathrm{B(OC_2H_5)_3} + 12\,\mathrm{O_3} \rightarrow \mathrm{B_2O_3} + 12\,\mathrm{CO_2} + 15\,\mathrm{H_2O} \qquad (\text{BSG, TEB})
+\mathrm{P_2O_5} + 3\,\mathrm{H_2O} \rightarrow 2\,\mathrm{H_3PO_4} \qquad (\text{PSG 흡습})
+\mathrm{B_2O_3} + 3\,\mathrm{H_2O} \rightarrow 2\,\mathrm{H_3BO_3} \qquad (\text{BSG 흡습})
+$$
 
 ---
 

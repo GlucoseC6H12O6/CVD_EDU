@@ -12,7 +12,7 @@ High-k는 $\mathrm{SiO_{2}}(k = 3.9)$보다 유전율이 높은 절연막이다.
 
 | 항목 | 게이트 | DRAM Capacitor |
 |---|---|---|
-| 화학식 | HfO₂. Si를 섞으면 HfSiOₓ, Zr를 섞으면 HfZrO(Hf₁₋ₓZrₓO₂) | ZrO₂, Al₂O₃를 ZrO₂ 사이에 끼운 적층 |
+| 조성식 | HfO₂. Si를 섞으면 HfSiOₓ, Zr를 섞으면 HfZrO(Hf₁₋ₓZrₓO₂) | ZrO₂, Al₂O₃를 ZrO₂ 사이에 끼운 적층 |
 | 주 재료 | HfO₂ | ZrO₂/Al₂O₃/ZrO₂ (ZAZ) |
 | 유전율 | 약 20–25 [리뷰 S01, 논문 S12] | 정방정 ZrO₂ 약 40 [논문 S13]. ZAZ 전체 약 28 [논문 S14] |
 | 두께 | 1.5–3 nm | 5–10 nm |
@@ -20,6 +20,15 @@ High-k는 $\mathrm{SiO_{2}}(k = 3.9)$보다 유전율이 높은 절연막이다.
 | 하부 | Si 위 SiO₂ 계면층 | TiN 하부 전극 |
 | 주 제약 | 계면층 때문에 EOT 1 nm 아래가 어렵다 [S06, S10] | 누설 기준 100 nA/cm² [S13]. 얇아지면 결정화가 안 된다 [S16] |
 | 증착 | ALD (HfCl₄ 또는 Amide 계 + H₂O·O₃) | ALD (Zr Amide·Cp 계, TMA + O₃) |
+
+**증착 반응식.** ALD의 두 반쪽 반응을 합친 전체 식이다. 계수를 붙인 식은 원소 수를 맞췄다 [계산]. Amide 원료는 리간드가 아민으로 빠진다. O₃를 산화제로 쓰면 리간드가 타서 CO₂·H₂O 등이 나오므로 마지막 줄은 개략식으로 적었다.
+
+$$
+\mathrm{HfCl_4} + 2\,\mathrm{H_2O} \rightarrow \mathrm{HfO_2} + 4\,\mathrm{HCl} \qquad (\text{HfCl₄})
+\mathrm{Hf[N(CH_3)(C_2H_5)]_4} + 2\,\mathrm{H_2O} \rightarrow \mathrm{HfO_2} + 4\,\mathrm{HN(CH_3)(C_2H_5)} \qquad (\text{TEMAH})
+2\,\mathrm{Al(CH_3)_3} + 3\,\mathrm{H_2O} \rightarrow \mathrm{Al_2O_3} + 6\,\mathrm{CH_4} \qquad (\text{TMA})
+\mathrm{Zr[N(CH_3)(C_2H_5)]_4} + \mathrm{O_3} \rightarrow \mathrm{ZrO_2} + \mathrm{CO_2} + \mathrm{H_2O} + \cdots \qquad (\text{Zr Amide + O₃})
+$$
 
 ---
 
